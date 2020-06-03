@@ -1,9 +1,0 @@
----
-version: "3.1"
-services:
-    web:
-        image: httpd:2.4
-        ports: 
-            - 80:80
-        volumes:
-            - ./knight_game:/usr/local/apache2/htdocs
