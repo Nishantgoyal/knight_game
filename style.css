@@ -1,25 +1,22 @@
 body {
     margin: 0px;
+    background-image: url(images/background.jpg);
+    background-size: cover;
 }
 
-#chessboard tr td {
-    text-align: center;
-    padding: 0;
-    width: 100px;
-    height: 100px;
+#chessboard {
+    width: 100vh;
+    height: 100vh;
 }
 
 #chessboard tr:nth-of-type(odd) td:nth-of-type(odd),
 #chessboard tr:nth-of-type(even) td:nth-of-type(even) {
     background: url(images/black.jpg);
     background-size: cover;
-    /* background-color: black; */
-    /* color: white; */
 }
 
 #chessboard tr:nth-of-type(odd) td:nth-of-type(even),
 #chessboard tr:nth-of-type(even) td:nth-of-type(odd) {
     background: url(images/white.jpg);
-    /* background-color: black; */
-    /* color: white; */
+    background-size: cover;
 }
