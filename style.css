@@ -1,7 +1,6 @@
 body {
     margin: 0px;
-    background-image: url(images/background.jpg);
-    background-size: cover;
+    background: rgba(128, 128, 128, 1.0);
 }
 
 #chessboard {
@@ -11,12 +10,10 @@ body {
 
 #chessboard tr:nth-of-type(odd) td:nth-of-type(odd),
 #chessboard tr:nth-of-type(even) td:nth-of-type(even) {
-    background: url(images/black.jpg);
-    background-size: cover;
+    background: rgba(40, 40, 40, 1.0);
 }
 
 #chessboard tr:nth-of-type(odd) td:nth-of-type(even),
 #chessboard tr:nth-of-type(even) td:nth-of-type(odd) {
-    background: url(images/white.jpg);
-    background-size: cover;
+    background: rgba(220, 220, 220, 1.0);
 }
