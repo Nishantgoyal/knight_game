@@ -17,3 +17,10 @@ body {
 #chessboard tr:nth-of-type(even) td:nth-of-type(odd) {
     background: rgba(220, 220, 220, 1.0);
 }
+
+@media all and (orientation: portrait) {
+    #chessboard {
+        width: 100vw;
+        height: 100vw;
+    }
+}
