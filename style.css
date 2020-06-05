@@ -9,6 +9,7 @@ body {
 #chessboard tr td {
     width: 12.5vh;
     height: 12.5vh;
+    border: 0.1px solid black;
 }
 
 #chessboard tr:nth-of-type(odd) td:nth-of-type(odd),
@@ -34,4 +35,8 @@ body {
 .knight {
     background-image: url(images/knight_image.jpg);
     background-size: cover;
+}
+
+.visited {
+    background-color: lightblue !important;
 }
