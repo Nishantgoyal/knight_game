@@ -3,9 +3,12 @@ body {
     background: rgba(128, 128, 128, 1.0);
 }
 
-#chessboard {
-    width: 100vh;
-    height: 100vh;
+
+/* Responsive cell */
+
+#chessboard tr td {
+    width: 12.5vh;
+    height: 12.5vh;
 }
 
 #chessboard tr:nth-of-type(odd) td:nth-of-type(odd),
@@ -19,8 +22,16 @@ body {
 }
 
 @media all and (orientation: portrait) {
-    #chessboard {
-        width: 100vw;
-        height: 100vw;
+    #chessboard tr td {
+        width: 12.5vw;
+        height: 12.5vw;
     }
+}
+
+
+/* Knight */
+
+.knight {
+    background-image: url(images/knight_image.jpg);
+    background-size: cover;
 }
