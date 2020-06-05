@@ -12,7 +12,6 @@ function move(pos_x, pos_y) {
     current_knight_pos["x"] = pos_x;
     current_knight_pos["y"] = pos_y;
     add_knight(pos_x, pos_y);
-
 }
 
 
@@ -42,4 +41,32 @@ function clear_knight(pos_x, pos_y) {
     var cell = get_cell(pos_x, pos_y);
     document.getElementsByClassName("knight")[0].innerHTML = null
     cell.classList.remove("knight");
+}
+
+function all_moves(pos_x, pos_y) {
+    var all_moves_list = [];
+    all_moves_list.push([pos_x + 1, pos_y + 2]);
+    all_moves_list.push([pos_x + 1, pos_y - 2]);
+    all_moves_list.push([pos_x - 1, pos_y + 2]);
+    all_moves_list.push([pos_x - 1, pos_y - 2]);
+    all_moves_list.push([pos_x + 2, pos_y + 1]);
+    all_moves_list.push([pos_x + 2, pos_y - 1]);
+    all_moves_list.push([pos_x - 2, pos_y + 1]);
+    all_moves_list.push([pos_x - 2, pos_y - 1]);
+    return all_moves_list;
+}
+
+function is_valid_move(pos) {
+    return (pos[0] >= 0 && pos[0] < 8 && pos[1] >= 0 && pos[1] < 8);
+}
+
+function valid_moves(pos_x, pos_y) {
+    var valid_moves_list = [];
+    var all_moves_list = all_moves(pos_x, pos_y);
+    all_moves_list.forEach(function(ele) {
+        if (is_valid_move(ele)) {
+            valid_moves_list.push(ele);
+        }
+    })
+    return valid_moves_list;
 }
