@@ -1,6 +1,7 @@
 body {
     margin: 0px;
-    background: rgba(128, 128, 128, 1.0);
+    /* background: rgba(128, 128, 128, 1.0); */
+    background-image: url(images/background.jpg);
 }
 
 
@@ -14,12 +15,19 @@ body {
 
 #chessboard tr:nth-of-type(odd) td:nth-of-type(odd),
 #chessboard tr:nth-of-type(even) td:nth-of-type(even) {
-    background: rgba(40, 40, 40, 1.0);
+    /* background: rgba(40, 40, 40, 1.0); */
+    /* background-color: #05571A; */
+    /* background-color: #0F26E6; */
+    /* background-color: #900C3F; */
+    background-image: linear-gradient( #094947, #052A29);
 }
 
 #chessboard tr:nth-of-type(odd) td:nth-of-type(even),
 #chessboard tr:nth-of-type(even) td:nth-of-type(odd) {
-    background: rgba(220, 220, 220, 1.0);
+    /* background: rgba(220, 220, 220, 1.0); */
+    /* background-color: #F7EF4E; */
+    /* background-color: #EEF069; */
+    background-image: linear-gradient(#E6E60F, #717A0C);
 }
 
 @media all and (orientation: portrait) {
@@ -38,5 +46,6 @@ body {
 }
 
 .visited {
-    background-color: lightblue !important;
+    /* background-image: linear-gradient(lightseagreen, lightcoral) !important; */
+    background-image: linear-gradient(orange, orange) !important;
 }
