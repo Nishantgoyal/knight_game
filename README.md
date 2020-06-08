@@ -4,9 +4,9 @@
 
 | Task                                                 | Status |
 | ---------------------------------------------------- | ------ |
-| Create the chess board                               | TODO   |
-| Make chess board responsive                          | TODO   |
-| Add on click behaviour to place the knight initially | TODO   |
+| Create the chess board                               | done   |
+| Make chess board responsive                          | done   |
+| Add on click behaviour to place the knight initially | done   |
 | Add Reset Button                                     | TODO   |
 | Add Reset Behaviour                                  | TODO   |
 | Add Back button                                      | TODO   |
