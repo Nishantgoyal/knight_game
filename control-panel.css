@@ -5,9 +5,17 @@
     width: 20vw;
 }
 
+.control {
+    height: 80vh;
+}
+
 @media screen and (orientation: portrait) {
     .logo {
         height: 20vh;
         width: 20vh;
+    }
+    .control {
+        height: 20vh;
+        width: 80vw;
     }
 }
