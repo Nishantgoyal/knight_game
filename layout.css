@@ -5,23 +5,23 @@
 
 .main-panel {
     background-color: lightblue;
-    height: 80vh;
+    height: 100vh;
     width: 80vh;
 }
 
 .sub-panel {
     background-color: lightcoral;
     height: 100vh;
-    width: 18vh;
+    width: 20vh;
 }
 
 @media screen and (orientation: portrait) {
     .main-panel {
         height: 80vw;
-        width: 80vw;
+        width: 100vw;
     }
     .sub-panel {
-        height: 18vh;
-        width: 100vh;
+        height: 20vw;
+        width: 100vw;
     }
 }
