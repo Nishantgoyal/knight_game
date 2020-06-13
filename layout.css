@@ -6,22 +6,22 @@
 .main-panel {
     background-color: lightblue;
     height: 100vh;
-    width: 80vh;
+    width: 80vw;
 }
 
 .sub-panel {
     background-color: lightcoral;
     height: 100vh;
-    width: 20vh;
+    width: 20vw;
 }
 
 @media screen and (orientation: portrait) {
     .main-panel {
-        height: 80vw;
+        height: 80vh;
         width: 100vw;
     }
     .sub-panel {
-        height: 20vw;
+        height: 20vh;
         width: 100vw;
     }
 }

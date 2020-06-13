@@ -1,0 +1,13 @@
+.chessboard {
+    background-color: lightgoldenrodyellow;
+    height: 80vh;
+    width: 80vh;
+}
+
+@media screen and (orientation: portrait) {
+    .chessboard {
+        background-color: lightgoldenrodyellow;
+        height: 80vw;
+        width: 80vw;
+    }
+}
