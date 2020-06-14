@@ -3,6 +3,10 @@ current_knight_pos = {
     "y": null
 }
 
+function get_chessboard() {
+    return document.querySelector(".chessboard table");
+}
+
 function move(pos_x, pos_y) {
     cur_x = current_knight_pos["x"];
     cur_y = current_knight_pos["y"];
@@ -16,7 +20,7 @@ function move(pos_x, pos_y) {
 
 
 function get_cell(pos_x, pos_y) {
-    var chessBoard = document.getElementById("chessboard");
+    var chessBoard = get_chessboard();
     var cell = chessBoard.rows[pos_x].cells[pos_y];
     return cell;
 }
@@ -58,7 +62,7 @@ function all_moves(pos_x, pos_y) {
 }
 
 function get_classes(x, y) {
-    var classes = document.getElementById("chessboard").rows[x].cells[y].classList;
+    var classes = get_chessboard().rows[x].cells[y].classList;
     // console.log(classes);
     return classes;
 }
@@ -90,7 +94,7 @@ function get_valid_moves(pos_x, pos_y) {
 }
 
 function addOnClick() {
-    var rows = document.getElementById("chessboard").rows;
+    var rows = document.querySelector(".chessboard table").rows;
     var i, j;
     for (i = 0; i < rows.length; i++) {
         for (j = 0; j < rows[i].cells.length; j++) {

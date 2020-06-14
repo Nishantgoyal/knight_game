@@ -10,7 +10,6 @@ function assign_class_to_cell(cell, cell_row, cell_col) {
 function create_board() {
     var chessboard = document.querySelector(".chessboard");
     var table = document.createElement("table");
-    var tableBody = document.createElement("tbody");
     for (var i = 0; i < 8; i++) {
         var row = document.createElement("tr");
         for (var j = 0; j < 8; j++) {
@@ -19,9 +18,8 @@ function create_board() {
             row.appendChild(cell);
 
         }
-        tableBody.appendChild(row);
+        table.appendChild(row);
     }
-    table.appendChild(tableBody);
     chessboard.appendChild(table);
 }
 

@@ -10,10 +10,18 @@
 }
 
 .white {
-    background-color: white;
+    background-color: lightcyan;
 }
 
 .black {
+    background-color: darkcyan;
+}
+
+.visited {
+    background-color: cyan;
+}
+
+.visited:hover {
     background-color: black;
 }
 
