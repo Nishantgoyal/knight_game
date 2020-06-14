@@ -7,6 +7,7 @@
 .cell {
     height: 10vh;
     width: 10vh;
+    border-radius: 0.2em;
 }
 
 .white {
@@ -18,11 +19,14 @@
 }
 
 .visited {
-    background-color: cyan;
+    text-align: center;
+    font-size: 5vh;
 }
 
 .visited:hover {
     background-color: black;
+    color: white;
+    transition: ease-in-out .5s;
 }
 
 @media screen and (orientation: portrait) {
@@ -34,5 +38,9 @@
     .cell {
         height: 10vw;
         width: 10vw;
+    }
+    .visited {
+        text-align: center;
+        font-size: 5vw;
     }
 }

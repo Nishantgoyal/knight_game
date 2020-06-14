@@ -45,6 +45,7 @@ function clear_knight(pos_x, pos_y) {
     var cell = get_cell(pos_x, pos_y);
     document.getElementsByClassName("knight")[0].innerHTML = null
     cell.classList.add("visited");
+    cell.textContent = "x";
     cell.classList.remove("knight");
 }
 
