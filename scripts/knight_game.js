@@ -153,4 +153,4 @@ function onClickBehaviour(event) {
     }
 }
 
-addOnClick()
+addOnClick();
