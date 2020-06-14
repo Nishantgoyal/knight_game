@@ -1,21 +1,12 @@
-.logo {
-    background-image: url(images/logo.jpg);
-    background-size: cover;
-    height: 20vw;
+.control-panel {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.control-panel .control {
+    justify-content: space-around;
+    display: flex;
     width: 20vw;
-}
-
-.control {
-    height: 80vh;
-}
-
-@media screen and (orientation: portrait) {
-    .logo {
-        height: 20vh;
-        width: 20vh;
-    }
-    .control {
-        height: 20vh;
-        width: 80vw;
-    }
 }
