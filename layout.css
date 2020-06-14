@@ -16,7 +16,7 @@
     width: 80vw;
 }
 
-.sub-panel {
+.control-panel {
     background-color: lightcoral;
     height: 95vh;
     width: 20vw;
@@ -27,7 +27,7 @@
         height: 80vh;
         width: 100vw;
     }
-    .sub-panel {
+    .control-panel {
         height: 15vh;
         width: 100vw;
     }
