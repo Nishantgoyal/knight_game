@@ -8,6 +8,8 @@
     height: 10vh;
     width: 10vh;
     border-radius: 0.2rem;
+    font-size: 5vh;
+    text-align: center;
 }
 
 .white {
@@ -16,11 +18,6 @@
 
 .black {
     background-color: darkcyan;
-}
-
-.visited {
-    text-align: center;
-    font-size: 5vh;
 }
 
 .visited:hover {

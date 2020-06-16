@@ -1,10 +1,9 @@
-var resetButton = document.getElementById("reset");
-resetButton.addEventListener("click", function() {
-    document.querySelector(".chessboard").innerHTML = null;
-    create_board();
-    current_knight_pos = {
-        "x": null,
-        "y": null
-    };
-    addOnClick();
+var controls = {
+    reset: document.getElementById("reset")
+};
+
+
+controls.reset.addEventListener("click", function() {
+    chessBoard.initialise();
+    state.initialise();
 });
