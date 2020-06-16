@@ -23,7 +23,6 @@ function move(posX, posY) {
         is_empty = true;
     }
     var valid_moves = get_valid_moves(this.cur_pos);
-    // console.log(valid_moves);
     for (var i = 0; i < valid_moves.length; i++) {
         if (posX == valid_moves[i][0] && posY == valid_moves[i][1]) {
             is_valid = true;
@@ -46,7 +45,6 @@ function move(posX, posY) {
             add_knight(posX, posY);
         }
     }
-    // this.print_trace();
 }
 
 

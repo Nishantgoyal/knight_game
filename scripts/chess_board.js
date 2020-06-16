@@ -11,34 +11,44 @@ var chessBoard = {
         [2, 3, 4, 4, 4, 4, 3, 2]
     ],
 
-    initialise: function() {
-        document.querySelector(".chessboard").innerHTML = null;
-        var chessboard = document.querySelector(".chessboard");
-        var table = document.createElement("table");
-        for (var i = 0; i < 8; i++) {
-            var row = document.createElement("tr");
-            for (var j = 0; j < 8; j++) {
-                var cell = document.createElement("td");
-                cell.classList.add("cell");
-                if ((i + j) % 2 == 0) {
-                    cell.classList.add("white");
-                } else {
-                    cell.classList.add("black");
-                }
-                // cell.textContent = this.board_values[i][j];
-                cell.addEventListener("click", function(event) {
-                    posX = event.target.getAttribute("posX");
-                    posY = event.target.getAttribute("posY");
-                    state.move(posX, posY);
-                });
-                cell.setAttribute("posX", (i));
-                cell.setAttribute("posY", (j));
-
-                row.appendChild(cell);
-            }
-            table.appendChild(row);
-        }
-        chessboard.appendChild(table);
-        this.table = document.querySelector(".chessboard table");
-    }
+    initialise: initialise_chessboard
 };
+
+function initialise_chessboard() {
+    document.querySelector(".chessboard").innerHTML = null;
+    document.querySelector(".chessboard").appendChild(create_table());
+    this.table = document.querySelector(".chessboard table");
+}
+
+function create_table() {
+    var table = document.createElement("table");
+    for (var i = 0; i < 8; i++) {
+        var row = document.createElement("tr");
+        for (var j = 0; j < 8; j++) {
+            var cell = create_cell(i, j);
+            row.appendChild(cell);
+        }
+        table.appendChild(row);
+    }
+    return table;
+}
+
+function create_cell(i, j) {
+    var cell = document.createElement("td");
+    cell.classList.add("cell");
+    if ((i + j) % 2 === 0) {
+        cell.classList.add("white");
+    } else {
+        cell.classList.add("black");
+    }
+    cell.setAttribute("posX", (i));
+    cell.setAttribute("posY", (j));
+    cell.addEventListener("click", click_listener_on_cell);
+    return cell;
+}
+
+function click_listener_on_cell() {
+    posX = this.getAttribute("posX");
+    posY = this.getAttribute("posY");
+    state.move(posX, posY);
+}
