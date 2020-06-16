@@ -99,6 +99,32 @@ function reduce_weight(position) {
     for (var i = 0; i < valid_moves.length; i++) {
         console.log(valid_moves[i]);
         chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]]--;
+        // var cell = chessBoard.table.rows[valid_moves[i][0]].cells[valid_moves[i][1]];
+        // console.log(cell);
+        // cell.textContent = chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]];
+    }
+}
+
+function reduce_weight(position) {
+    pos_x = Number(position[0]);
+    pos_y = Number(position[1]);
+    valid_moves = get_valid_moves(position);
+    for (var i = 0; i < valid_moves.length; i++) {
+        console.log(valid_moves[i]);
+        chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]]--;
+        var cell = chessBoard.table.rows[valid_moves[i][0]].cells[valid_moves[i][1]];
+        console.log(cell);
+        cell.textContent = chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]];
+    }
+}
+
+function increase_weight(position) {
+    pos_x = Number(position[0]);
+    pos_y = Number(position[1]);
+    valid_moves = get_valid_moves(position);
+    for (var i = 0; i < valid_moves.length; i++) {
+        console.log(valid_moves[i]);
+        chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]]++;
         var cell = chessBoard.table.rows[valid_moves[i][0]].cells[valid_moves[i][1]];
         console.log(cell);
         cell.textContent = chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]];

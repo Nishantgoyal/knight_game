@@ -57,6 +57,7 @@ function move_back() {
         return;
     } else {
         move_back_knight(last_pos);
+        increase_weight(last_pos);
         this.cur_pos = this.trace.pop();
         if (this.cur_pos !== undefined) {
             this.trace.push(this.cur_pos);
