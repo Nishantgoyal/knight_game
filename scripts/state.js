@@ -33,6 +33,7 @@ function move(posX, posY) {
         this.cur_pos = [posX, posY];
         this.trace.push(this.cur_pos);
         add_knight(posX, posY);
+        reduce_weight(this.cur_pos);
     } else {
         if (valid_moves.length === 0) {
             console.log("No Valid Moves Left");
@@ -41,6 +42,7 @@ function move(posX, posY) {
             clear_knight(this.cur_pos);
             this.cur_pos = [posX, posY];
             this.trace.push(this.cur_pos);
+            reduce_weight(this.cur_pos);
             add_knight(posX, posY);
         }
     }

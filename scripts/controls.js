@@ -1,6 +1,7 @@
 var controls = {
     reset: document.getElementById("reset"),
-    back: document.getElementById("back")
+    back: document.getElementById("back"),
+    solution: document.getElementById("solution")
 };
 
 
@@ -12,3 +13,5 @@ controls.reset.addEventListener("click", function() {
 controls.back.addEventListener("click", function() {
     state.back();
 });
+
+controls.solution.addEventListener("click", solve);

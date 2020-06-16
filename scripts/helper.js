@@ -82,3 +82,42 @@ function get_valid_moves(pos) {
     })
     return valid_moves_list;
 }
+
+function get_min_valid_move(valid_moves) {
+    min_valid_move = undefined;
+    min_value = 8;
+    for (var i = 0; i < valid_moves.length; i++) {
+        value = chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]]
+        console.log(valid_moves[i], value);
+    }
+}
+
+function reduce_weight(position) {
+    pos_x = Number(position[0]);
+    pos_y = Number(position[1]);
+    valid_moves = get_valid_moves(position);
+    for (var i = 0; i < valid_moves.length; i++) {
+        console.log(valid_moves[i]);
+        chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]]--;
+        var cell = chessBoard.table.rows[valid_moves[i][0]].cells[valid_moves[i][1]];
+        console.log(cell);
+        cell.textContent = chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]];
+    }
+}
+
+function solve() {
+    if (state.trace.length > 1) {
+        document.querySelector(".page-title h3").textContent = "Please reset the board and click on a cell. Then click on solve button";
+    } else if (state.trace.length === 1) {
+        var cur_pos = state.trace[0];
+        for (var i = 0; i < 64; i++) {
+            console.log(cur_pos);
+            var valid_moves = get_valid_moves(cur_pos);
+            console.log(valid_moves);
+            get_min_valid_move(valid_moves);
+            break;
+        }
+    } else {
+        document.querySelector(".page-title h3").textContent = "Please click on a cell. Then click on solve button";
+    }
+}
