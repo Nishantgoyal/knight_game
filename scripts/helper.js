@@ -6,7 +6,7 @@ function create_knight_image() {
 }
 
 function add_knight(pos_x, pos_y) {
-    console.log("Adding knight at:", pos_x, pos_y);
+    // console.log("Adding knight at:", pos_x, pos_y);
     var cell = chessBoard.table.rows[pos_x].cells[pos_y];
     cell.classList.add("knight");
     var knight_img = create_knight_image();
@@ -24,6 +24,16 @@ function clear_knight(position) {
     cell.classList.add("visited");
     cell.textContent = "x";
     cell.classList.remove("knight");
+}
+
+function move_back_knight(position) {
+    pos_x = Number(position[0]);
+    pos_y = Number(position[1]);
+    var cell = chessBoard.table.rows[pos_x].cells[pos_y];
+    cell.innerHTML = null;
+    cell.classList.remove("knight");
+    cell.classList.remove("visited");
+    // cell.textContent = "x";
 }
 
 function all_moves(pos_x, pos_y) {
@@ -66,7 +76,7 @@ function get_valid_moves(pos) {
     var all_moves_list = all_moves(pos_x, pos_y);
     all_moves_list.forEach(function(ele) {
         if (is_valid_move(ele)) {
-            console.log(ele);
+            // console.log(ele);
             valid_moves_list.push(ele);
         }
     })

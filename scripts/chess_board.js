@@ -25,7 +25,7 @@ var chessBoard = {
                 } else {
                     cell.classList.add("black");
                 }
-                cell.textContent = this.board_values[i][j];
+                // cell.textContent = this.board_values[i][j];
                 cell.addEventListener("click", function(event) {
                     posX = event.target.getAttribute("posX");
                     posY = event.target.getAttribute("posY");
