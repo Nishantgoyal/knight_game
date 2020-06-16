@@ -87,34 +87,27 @@ function get_min_valid_move(valid_moves) {
     min_valid_move = undefined;
     min_value = 8;
     for (var i = 0; i < valid_moves.length; i++) {
-        value = chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]]
-        console.log(valid_moves[i], value);
+        value = chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]];
+        // console.log(valid_moves[i], value);
+        if (value < min_value) {
+            min_value = value;
+            min_valid_move = valid_moves[i];
+        }
     }
+    return min_valid_move;
 }
+
 
 function reduce_weight(position) {
     pos_x = Number(position[0]);
     pos_y = Number(position[1]);
     valid_moves = get_valid_moves(position);
     for (var i = 0; i < valid_moves.length; i++) {
-        console.log(valid_moves[i]);
+        // console.log(valid_moves[i]);
         chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]]--;
         // var cell = chessBoard.table.rows[valid_moves[i][0]].cells[valid_moves[i][1]];
         // console.log(cell);
         // cell.textContent = chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]];
-    }
-}
-
-function reduce_weight(position) {
-    pos_x = Number(position[0]);
-    pos_y = Number(position[1]);
-    valid_moves = get_valid_moves(position);
-    for (var i = 0; i < valid_moves.length; i++) {
-        console.log(valid_moves[i]);
-        chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]]--;
-        var cell = chessBoard.table.rows[valid_moves[i][0]].cells[valid_moves[i][1]];
-        console.log(cell);
-        cell.textContent = chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]];
     }
 }
 
@@ -123,27 +116,34 @@ function increase_weight(position) {
     pos_y = Number(position[1]);
     valid_moves = get_valid_moves(position);
     for (var i = 0; i < valid_moves.length; i++) {
-        console.log(valid_moves[i]);
+        // console.log(valid_moves[i]);
         chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]]++;
-        var cell = chessBoard.table.rows[valid_moves[i][0]].cells[valid_moves[i][1]];
-        console.log(cell);
-        cell.textContent = chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]];
+        // var cell = chessBoard.table.rows[valid_moves[i][0]].cells[valid_moves[i][1]];
+        // console.log(cell);
+        // cell.textContent = chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]];
     }
 }
-
-function solve() {
+async function solve() {
     if (state.trace.length > 1) {
         document.querySelector(".page-title h3").textContent = "Please reset the board and click on a cell. Then click on solve button";
     } else if (state.trace.length === 1) {
         var cur_pos = state.trace[0];
-        for (var i = 0; i < 64; i++) {
-            console.log(cur_pos);
+        for (var i = 1; i < 64; i++) {
+            console.log(i);
             var valid_moves = get_valid_moves(cur_pos);
-            console.log(valid_moves);
-            get_min_valid_move(valid_moves);
-            break;
+            // console.log(valid_moves);
+            min_move = get_min_valid_move(valid_moves);
+            state.move(min_move[0], min_move[1]);
+            cur_pos = min_move;
+            // break;
+            await sleep(1000);
+
         }
     } else {
         document.querySelector(".page-title h3").textContent = "Please click on a cell. Then click on solve button";
     }
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }

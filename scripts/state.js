@@ -46,7 +46,7 @@ function move(posX, posY) {
             add_knight(posX, posY);
         }
     }
-    this.print_trace();
+    // this.print_trace();
 }
 
 
@@ -66,5 +66,5 @@ function move_back() {
             this.cur_pos = [];
         }
     }
-    console.log(this);
+    // console.log(this);
 }
