@@ -14,9 +14,9 @@ function get_cell(position) {
 function add_knight(position) {
     var cell = get_cell(position);
     cell.classList.add("knight");
-    var knight_img = create_knight_image();
-    cell.innerHTML = null;
-    cell.appendChild(knight_img);
+    // var knight_img = create_knight_image();
+    // cell.innerHTML = null;
+    // cell.appendChild(knight_img);
 }
 
 function clear_knight(position) {
@@ -25,7 +25,7 @@ function clear_knight(position) {
     }
     var cell = get_cell(position);
     cell.classList.add("visited");
-    cell.textContent = "x";
+    cell.textContent = null;
     cell.classList.remove("knight");
 }
 
@@ -112,15 +112,29 @@ function get_min_valid_move(position) {
 
 function modify_weight(position, weight) {
     var valid_moves = get_valid_moves(position);
-    console.log(valid_moves);
+    // console.log(valid_moves);
     for (var i = 0; i < valid_moves.length; i++) {
         chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]] += weight;
-        var cell = get_cell(valid_moves[i]);
-        cell.textContent = chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]];
+        // var cell = get_cell(valid_moves[i]);
+        // cell.textContent = chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]];
     }
 }
 
 function sleep(ms) {
     // ms = 10;
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function hightlight_valid_moves(posX, posY) {
+    var elements = document.querySelectorAll(".highlight");
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].classList.remove('highlight');
+    }
+    var valid_moves = get_valid_moves([posX, posY]);
+    // console.log(valid_moves);
+    valid_moves.forEach(function(move) {
+        var cell = get_cell(move);
+        // console.log(cell);
+        cell.classList.add("highlight");
+    })
 }

@@ -47,7 +47,7 @@ function create_cell(i, j) {
     cell.setAttribute("posX", (i));
     cell.setAttribute("posY", (j));
     cell.addEventListener("click", click_listener_on_cell);
-    cell.textContent = chessBoard.board_values[i][j];
+    // cell.textContent = chessBoard.board_values[i][j];
     return cell;
 }
 
@@ -55,4 +55,5 @@ function click_listener_on_cell() {
     posX = this.getAttribute("posX");
     posY = this.getAttribute("posY");
     state.move(posX, posY);
+    hightlight_valid_moves(posX, posY);
 }
