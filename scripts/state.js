@@ -31,8 +31,8 @@ function move(posX, posY) {
     if (is_empty) {
         this.cur_pos = [posX, posY];
         this.trace.push(this.cur_pos);
-        add_knight(posX, posY);
-        reduce_weight(this.cur_pos);
+        add_knight(this.cur_pos);
+        modify_weight(this.cur_pos, -1);
     } else {
         if (valid_moves.length === 0) {
             console.log("No Valid Moves Left");
@@ -41,8 +41,8 @@ function move(posX, posY) {
             clear_knight(this.cur_pos);
             this.cur_pos = [posX, posY];
             this.trace.push(this.cur_pos);
-            reduce_weight(this.cur_pos);
-            add_knight(posX, posY);
+            modify_weight(this.cur_pos, -1);
+            add_knight(this.cur_pos);
         }
     }
 }
@@ -55,14 +55,13 @@ function move_back() {
         return;
     } else {
         move_back_knight(last_pos);
-        increase_weight(last_pos);
+        modify_weight(last_pos, 1);
         this.cur_pos = this.trace.pop();
         if (this.cur_pos !== undefined) {
             this.trace.push(this.cur_pos);
-            add_knight(this.cur_pos[0], this.cur_pos[1]);
+            add_knight(this.cur_pos);
         } else {
             this.cur_pos = [];
         }
     }
-    // console.log(this);
 }
