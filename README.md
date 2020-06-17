@@ -13,3 +13,5 @@
 | Add Back button                                      | done        |
 | Add Back behaviour                                   | done        |
 | Reformat the code                                    | in-progress |
+| highlight valid moves                                | TODO        |
+| Add animation in knight movement                     | TODO        |

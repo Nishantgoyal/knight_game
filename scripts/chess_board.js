@@ -1,6 +1,11 @@
 var chessBoard = {
     table: null,
-    board_values: [
+    board_values: initialise_board_values(),
+    initialise: initialise_chessboard
+};
+
+function initialise_board_values() {
+    return [
         [2, 3, 4, 4, 4, 4, 3, 2],
         [3, 4, 6, 6, 6, 6, 4, 3],
         [4, 6, 8, 8, 8, 8, 6, 4],
@@ -9,10 +14,8 @@ var chessBoard = {
         [4, 6, 8, 8, 8, 8, 6, 4],
         [3, 4, 6, 6, 6, 6, 4, 3],
         [2, 3, 4, 4, 4, 4, 3, 2]
-    ],
-
-    initialise: initialise_chessboard
-};
+    ];
+}
 
 function initialise_chessboard() {
     document.querySelector(".chessboard").innerHTML = null;
@@ -44,6 +47,7 @@ function create_cell(i, j) {
     cell.setAttribute("posX", (i));
     cell.setAttribute("posY", (j));
     cell.addEventListener("click", click_listener_on_cell);
+    cell.textContent = chessBoard.board_values[i][j];
     return cell;
 }
 

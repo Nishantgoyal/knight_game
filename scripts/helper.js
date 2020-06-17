@@ -77,9 +77,6 @@ function is_valid_move(position) {
 }
 
 function get_valid_moves(position) {
-    if (position === null) {
-        return;
-    }
     pos_x = Number(position[0]);
     pos_y = Number(position[1]);
     var valid_moves_list = [];
@@ -96,6 +93,13 @@ function get_min_valid_move(position) {
     var valid_moves = get_valid_moves(position);
     var min_valid_move;
     var min_value = 8;
+    // valid_moves.forEach(function (vm) {
+    //     var value = chessBoard.board_values[vm[0]][vm[1]];
+    //     if (value < min_value) {
+    // //         min_value = value;
+    //         min_valid_move = vm;
+    //     }
+    // });
     for (var i = 0; i < valid_moves.length; i++) {
         var value = chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]];
         if (value < min_value) {
@@ -107,12 +111,16 @@ function get_min_valid_move(position) {
 }
 
 function modify_weight(position, weight) {
-    valid_moves = get_valid_moves(position);
+    var valid_moves = get_valid_moves(position);
+    console.log(valid_moves);
     for (var i = 0; i < valid_moves.length; i++) {
         chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]] += weight;
+        var cell = get_cell(valid_moves[i]);
+        cell.textContent = chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]];
     }
 }
 
 function sleep(ms) {
+    // ms = 10;
     return new Promise(resolve => setTimeout(resolve, ms));
 }

@@ -6,6 +6,7 @@ var controls = {
 
 
 controls.reset.addEventListener("click", function() {
+    chessBoard.board_values = initialise_board_values();
     chessBoard.initialise();
     state.initialise();
 });
