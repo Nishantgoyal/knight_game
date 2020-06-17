@@ -32,6 +32,7 @@ function move(posX, posY) {
         this.cur_pos = [posX, posY];
         this.trace.push(this.cur_pos);
         add_knight(this.cur_pos);
+        hightlight_valid_moves(this.cur_pos[0], this.cur_pos[1]);
         modify_weight(this.cur_pos, -1);
     } else {
         if (valid_moves.length === 0) {
@@ -40,15 +41,33 @@ function move(posX, posY) {
         if (is_valid) {
             clear_knight(this.cur_pos);
             this.cur_pos = [posX, posY];
+            hightlight_valid_moves(this.cur_pos[0], this.cur_pos[1]);
             this.trace.push(this.cur_pos);
             modify_weight(this.cur_pos, -1);
             add_knight(this.cur_pos);
+            end_game(this.cur_pos);
         }
+    }
+}
+
+function end_game(position) {
+    var visited_count = document.querySelectorAll(".visited");
+    if (visited_count.length === 63) {
+        document.querySelector(".page-title h3").textContent = "You Win.";
+        return;
+    }
+    var valid_moves = get_valid_moves(position);
+    if (valid_moves.length === 0) {
+        document.querySelector(".page-title h3").textContent = "Game Over. No moves left";
     }
 }
 
 
 function move_back() {
+    if (this.trace.length == 1) {
+        document.querySelector(".page-title h3").textContent = "No move to Go Back. Please Reset the board to start again.";
+        return;
+    }
     var last_pos = this.trace.pop();
     if (last_pos === undefined) {
         console.log("No moves made");
@@ -58,9 +77,14 @@ function move_back() {
         modify_weight(last_pos, 1);
         this.cur_pos = this.trace.pop();
         if (this.cur_pos !== undefined) {
+            hightlight_valid_moves(this.cur_pos[0], this.cur_pos[1]);
             this.trace.push(this.cur_pos);
             add_knight(this.cur_pos);
         } else {
+            var elements = document.querySelectorAll(".highlight");
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].classList.remove('highlight');
+            }
             this.cur_pos = [];
         }
     }

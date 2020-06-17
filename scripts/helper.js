@@ -1,10 +1,3 @@
-function create_knight_image() {
-    var knight_img = new Image();
-    knight_img.src = "images/knight_image.png";
-    knight_img.classList = ["img-fluid"];
-    return knight_img;
-}
-
 function get_cell(position) {
     pos_x = Number(position[0]);
     pos_y = Number(position[1]);
@@ -13,10 +6,8 @@ function get_cell(position) {
 
 function add_knight(position) {
     var cell = get_cell(position);
+    cell.classList.remove("visited");
     cell.classList.add("knight");
-    // var knight_img = create_knight_image();
-    // cell.innerHTML = null;
-    // cell.appendChild(knight_img);
 }
 
 function clear_knight(position) {
@@ -25,7 +16,7 @@ function clear_knight(position) {
     }
     var cell = get_cell(position);
     cell.classList.add("visited");
-    cell.textContent = null;
+    // cell.textContent = null;
     cell.classList.remove("knight");
 }
 

@@ -55,5 +55,4 @@ function click_listener_on_cell() {
     posX = this.getAttribute("posX");
     posY = this.getAttribute("posY");
     state.move(posX, posY);
-    hightlight_valid_moves(posX, posY);
 }
