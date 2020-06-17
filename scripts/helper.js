@@ -27,7 +27,9 @@ function move_back_knight(position) {
     cell.classList.remove("visited");
 }
 
-function all_moves(pos_x, pos_y) {
+function all_moves(position) {
+    pos_x = Number(position[0]);
+    pos_y = Number(position[1]);
     var all_moves_list = [
         [pos_x + 1, pos_y + 2],
         [pos_x + 1, pos_y - 2],
@@ -68,10 +70,8 @@ function is_valid_move(position) {
 }
 
 function get_valid_moves(position) {
-    pos_x = Number(position[0]);
-    pos_y = Number(position[1]);
     var valid_moves_list = [];
-    var all_moves_list = all_moves(pos_x, pos_y);
+    var all_moves_list = all_moves(position);
     all_moves_list.forEach(function(ele) {
         if (is_valid_move(ele)) {
             valid_moves_list.push(ele);
