@@ -27,12 +27,6 @@ function move(posX, posY) {
     }
 
 
-    // var valid_moves = get_valid_moves(this.cur_pos);
-    // for (var i = 0; i < valid_moves.length; i++) {
-    //     if (posX == valid_moves[i][0] && posY == valid_moves[i][1]) {
-    //         is_valid = true;
-    //     }
-    // }
     if (first_move) {
         // If it is the first move, just move it there
         this.cur_pos = [posX, posY];
