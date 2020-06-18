@@ -6,7 +6,7 @@ var controls = {
 
 
 controls.reset.addEventListener("click", function() {
-    document.querySelector(".page-title h3").textContent = "Knight Tour";
+    $(".page-title h3").text("Knight Tour");
     chessBoard.board_values = initialise_board_values();
     chessBoard.initialise();
     state.initialise();
