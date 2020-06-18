@@ -129,3 +129,8 @@ function hightlight_valid_moves(posX, posY) {
         cell.classList.add("highlight");
     })
 }
+
+function modify_title(message) {
+    // Changes the message of the game-title element
+    $("#game-title").text(message);
+}
