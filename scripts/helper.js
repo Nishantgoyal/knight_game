@@ -73,6 +73,24 @@ function is_valid_move(position) {
     return !is_visited;
 }
 
+function clear_valid_moves() {
+    $(".valid").removeClass("valid");
+}
+
+function add_valid_moves(position) {
+    clear_valid_moves();
+    var valid_moves_list = [];
+    var all_moves_list = all_moves(position);
+    all_moves_list.forEach(function(ele) {
+        if (is_valid_move(ele)) {
+            id = get_ID_at_position(ele);
+            $(id).addClass("valid");
+            valid_moves_list.push(ele);
+        }
+    })
+    return valid_moves_list;
+}
+
 function get_valid_moves(position) {
     var valid_moves_list = [];
     var all_moves_list = all_moves(position);

@@ -19,6 +19,7 @@ function move(posX, posY) {
 
     var is_valid = false;
     var is_empty = false;
+    add_valid_moves([posX, posY]);
     if (this.cur_pos.length == 0) {
         is_empty = true;
     }
@@ -77,7 +78,9 @@ function move_back() {
     var last_pos = this.trace.pop();
     clear_position(last_pos);
 
+    // Increase board values for valid moves
     modify_weight(last_pos, 1);
+
     this.cur_pos = this.trace.pop();
     if (this.cur_pos !== undefined) {
         hightlight_valid_moves(this.cur_pos[0], this.cur_pos[1]);
