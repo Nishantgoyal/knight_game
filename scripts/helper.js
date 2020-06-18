@@ -138,7 +138,9 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function hightlight_valid_moves(posX, posY) {
+function hightlight_valid_moves(position) {
+    pos_x = Number(position[0]);
+    pos_y = Number(position[1]);
     var elements = document.querySelectorAll(".highlight");
     for (var i = 0; i < elements.length; i++) {
         elements[i].classList.remove('highlight');

@@ -16,24 +16,28 @@ var state = {
 };
 
 function move(posX, posY) {
+    // This is called when any cell is clicked
 
     var is_valid = false;
-    var is_empty = false;
-    add_valid_moves([posX, posY]);
-    if (this.cur_pos.length == 0) {
-        is_empty = true;
+    var first_move = false;
+
+    // Check Trace to see if any moves made
+    if (this.trace.length == 0) {
+        first_move = true;
     }
+
+
     var valid_moves = get_valid_moves(this.cur_pos);
     for (var i = 0; i < valid_moves.length; i++) {
         if (posX == valid_moves[i][0] && posY == valid_moves[i][1]) {
             is_valid = true;
         }
     }
-    if (is_empty) {
+    if (first_move) {
         this.cur_pos = [posX, posY];
         this.trace.push(this.cur_pos);
         add_knight(this.cur_pos);
-        hightlight_valid_moves(this.cur_pos[0], this.cur_pos[1]);
+        hightlight_valid_moves(this.cur_pos);
         modify_weight(this.cur_pos, -1);
     } else {
         if (valid_moves.length === 0) {
@@ -42,7 +46,8 @@ function move(posX, posY) {
         if (is_valid) {
             clear_knight(this.cur_pos);
             this.cur_pos = [posX, posY];
-            hightlight_valid_moves(this.cur_pos[0], this.cur_pos[1]);
+            hightlight_valid_moves(this.cur_pos);
+
             this.trace.push(this.cur_pos);
             modify_weight(this.cur_pos, -1);
             add_knight(this.cur_pos);
@@ -83,7 +88,8 @@ function move_back() {
 
     this.cur_pos = this.trace.pop();
     if (this.cur_pos !== undefined) {
-        hightlight_valid_moves(this.cur_pos[0], this.cur_pos[1]);
+        hightlight_valid_moves(this.cur_pos);
+
         this.trace.push(this.cur_pos);
         add_knight(this.cur_pos);
     } else {
