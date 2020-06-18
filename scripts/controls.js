@@ -10,8 +10,14 @@ controls.reset.addEventListener("click", function() {
 
     // 1. Resets the game title
     modify_title("Knight Tour");
+
+    // 2. Resets the board values
     chessBoard.board_values = initialise_board_values();
+
+    // 3. Initialises the chessboard
     chessBoard.initialise();
+
+    // 4. Initialise the state
     state.initialise();
 });
 

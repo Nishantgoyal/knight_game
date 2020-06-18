@@ -64,28 +64,25 @@ function end_game(position) {
 
 
 function move_back() {
-    if (this.trace.length == 1) {
-        modify_title("No move to Go Back. Please Reset the board to start again.");
+    // Function to move the Knight by 1 step
+
+    // Case 1: Only one or no move made
+    if (this.trace.length <= 1) {
         return;
     }
+
+    // Case 2: More than one move made
+
     var last_pos = this.trace.pop();
-    if (last_pos === undefined) {
-        console.log("No moves made");
-        return;
+    move_back_knight(last_pos);
+    modify_weight(last_pos, 1);
+    this.cur_pos = this.trace.pop();
+    if (this.cur_pos !== undefined) {
+        hightlight_valid_moves(this.cur_pos[0], this.cur_pos[1]);
+        this.trace.push(this.cur_pos);
+        add_knight(this.cur_pos);
     } else {
-        move_back_knight(last_pos);
-        modify_weight(last_pos, 1);
-        this.cur_pos = this.trace.pop();
-        if (this.cur_pos !== undefined) {
-            hightlight_valid_moves(this.cur_pos[0], this.cur_pos[1]);
-            this.trace.push(this.cur_pos);
-            add_knight(this.cur_pos);
-        } else {
-            var elements = document.querySelectorAll(".highlight");
-            for (var i = 0; i < elements.length; i++) {
-                elements[i].classList.remove('highlight');
-            }
-            this.cur_pos = [];
-        }
+        $(".highlight").removeClass("highlight");
+        this.cur_pos = [];
     }
 }
