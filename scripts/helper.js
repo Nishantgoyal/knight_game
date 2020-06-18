@@ -158,3 +158,18 @@ function modify_title(message) {
     // Changes the message of the game-title element
     $("#game-title").text(message);
 }
+
+function is_move_valid(cur_position, move) {
+    // It checks the current position, and move player is trying to make. 
+    // It returns true if move is one of the valid moves else false
+    posX = Number(move[0]);
+    posY = Number(move[1]);
+    is_valid = false;
+    var valid_moves = get_valid_moves(cur_position);
+    for (var i = 0; i < valid_moves.length; i++) {
+        if (posX === valid_moves[i][0] && posY === valid_moves[i][1]) {
+            is_valid = true;
+        }
+    }
+    return is_valid;
+}

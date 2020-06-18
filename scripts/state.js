@@ -27,22 +27,23 @@ function move(posX, posY) {
     }
 
 
-    var valid_moves = get_valid_moves(this.cur_pos);
-    for (var i = 0; i < valid_moves.length; i++) {
-        if (posX == valid_moves[i][0] && posY == valid_moves[i][1]) {
-            is_valid = true;
-        }
-    }
+    // var valid_moves = get_valid_moves(this.cur_pos);
+    // for (var i = 0; i < valid_moves.length; i++) {
+    //     if (posX == valid_moves[i][0] && posY == valid_moves[i][1]) {
+    //         is_valid = true;
+    //     }
+    // }
     if (first_move) {
+        // If it is the first move, just move it there
         this.cur_pos = [posX, posY];
         this.trace.push(this.cur_pos);
         add_knight(this.cur_pos);
         hightlight_valid_moves(this.cur_pos);
         modify_weight(this.cur_pos, -1);
     } else {
-        if (valid_moves.length === 0) {
-            console.log("No Valid Moves Left");
-        }
+        // If it is not first move
+        // Check if it is a valid move
+        is_valid = is_move_valid(this.cur_pos, [posX, posY]);
         if (is_valid) {
             clear_knight(this.cur_pos);
             this.cur_pos = [posX, posY];
