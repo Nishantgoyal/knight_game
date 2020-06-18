@@ -1,5 +1,6 @@
 var state = {
     cur_pos: [],
+    cur_coord: undefined,
     trace: [],
     print_trace: function() {
         console.log("<<<<<=====>>>>>");
@@ -30,6 +31,10 @@ function move(posX, posY) {
     if (first_move) {
         // If it is the first move, just move it there
         this.cur_pos = [posX, posY];
+        this.cur_coord = {
+            x: posX,
+            y: posY
+        }
         this.trace.push(this.cur_pos);
         add_knight(this.cur_pos);
         hightlight_valid_moves(this.cur_pos);
@@ -41,6 +46,10 @@ function move(posX, posY) {
         if (is_valid) {
             clear_knight(this.cur_pos);
             this.cur_pos = [posX, posY];
+            this.cur_coord = {
+                x: posX,
+                y: posY
+            }
             hightlight_valid_moves(this.cur_pos);
 
             this.trace.push(this.cur_pos);
