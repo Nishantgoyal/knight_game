@@ -38,6 +38,9 @@ function create_table() {
 
 function create_cell(i, j) {
     var cell = document.createElement("td");
+    var ID = i + "_" + j;
+    console.log(ID);
+    cell.id = ID;
     cell.classList.add("cell");
     if ((i + j) % 2 === 0) {
         cell.classList.add("white");
