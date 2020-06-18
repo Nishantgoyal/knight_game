@@ -53,19 +53,19 @@ function move(posX, posY) {
 function end_game(position) {
     var visited_count = document.querySelectorAll(".visited");
     if (visited_count.length === 63) {
-        document.querySelector(".page-title h3").textContent = "You Win.";
+        modify_title("You Win.");
         return;
     }
     var valid_moves = get_valid_moves(position);
     if (valid_moves.length === 0) {
-        document.querySelector(".page-title h3").textContent = "Game Over. No moves left";
+        modify_title("Game Over. No moves left");
     }
 }
 
 
 function move_back() {
     if (this.trace.length == 1) {
-        document.querySelector(".page-title h3").textContent = "No move to Go Back. Please Reset the board to start again.";
+        modify_title("No move to Go Back. Please Reset the board to start again.");
         return;
     }
     var last_pos = this.trace.pop();

@@ -6,7 +6,10 @@ var controls = {
 
 
 controls.reset.addEventListener("click", function() {
-    $("#game-title").text("Knight Tour");
+    // Behaviour of Reset button
+
+    // 1. Resets the game title
+    modify_title("Knight Tour");
     chessBoard.board_values = initialise_board_values();
     chessBoard.initialise();
     state.initialise();
@@ -18,11 +21,12 @@ controls.back.addEventListener("click", function() {
 
 controls.solution.addEventListener("click", function() {
     if (state.trace.length > 1) {
-        document.querySelector(".page-title h3").textContent = "Please reset the board and click on a cell. Then click on solve button";
+        modify_title("Please reset the board and click on a cell. Then click on solve button");
+
     } else if (state.trace.length === 1) {
         solve();
     } else {
-        document.querySelector(".page-title h3").textContent = "Please click on a cell. Then click on solve button";
+        modify_title("Please click on a cell. Then click on solve button");
     }
 });
 
