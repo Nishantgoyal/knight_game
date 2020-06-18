@@ -37,7 +37,7 @@ function move(posX, posY) {
         }
         this.trace.push(this.cur_pos);
         add_knight(this.cur_pos);
-        hightlight_valid_moves(this.cur_pos);
+        hightlight_valid_moves(this.cur_coord);
         modify_weight(this.cur_pos, -1);
     } else {
         // If it is not first move
@@ -50,7 +50,7 @@ function move(posX, posY) {
                 x: posX,
                 y: posY
             }
-            hightlight_valid_moves(this.cur_pos);
+            hightlight_valid_moves(this.cur_coord);
 
             this.trace.push(this.cur_pos);
             modify_weight(this.cur_pos, -1);
@@ -92,7 +92,7 @@ function move_back() {
 
     this.cur_pos = this.trace.pop();
     if (this.cur_pos !== undefined) {
-        hightlight_valid_moves(this.cur_pos);
+        hightlight_valid_moves(this.cur_coord);
 
         this.trace.push(this.cur_pos);
         add_knight(this.cur_pos);

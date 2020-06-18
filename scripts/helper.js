@@ -138,20 +138,23 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function hightlight_valid_moves(position) {
-    pos_x = Number(position[0]);
-    pos_y = Number(position[1]);
-    var elements = document.querySelectorAll(".highlight");
-    for (var i = 0; i < elements.length; i++) {
-        elements[i].classList.remove('highlight');
-    }
-    var valid_moves = get_valid_moves([posX, posY]);
+function remove_highlight_class() {
+    $(".highlight").removeClass("highlight");
+}
+
+function hightlight_valid_moves(cur_coordinates) {
+    remove_highlight_class();
+
+    var valid_moves = get_valid_moves([
+        cur_coordinates.x,
+        cur_coordinates.y
+    ]);
     // console.log(valid_moves);
     valid_moves.forEach(function(move) {
         var cell = get_cell(move);
         // console.log(cell);
         cell.classList.add("highlight");
-    })
+    });
 }
 
 function modify_title(message) {
