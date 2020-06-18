@@ -4,6 +4,12 @@ function get_cell(position) {
     return chessBoard.table.rows[pos_x].cells[pos_y];
 }
 
+function get_ID_at_position(position) {
+    // It returns the ID of the cell at the given coordinated
+    // E.g.: position: (3,2) --> cell with ID "3_2"
+    return "#" + position[0] + "_" + position[1];
+}
+
 function add_knight(position) {
     var cell = get_cell(position);
     cell.classList.remove("visited");
@@ -20,11 +26,9 @@ function clear_knight(position) {
     cell.classList.remove("knight");
 }
 
-function move_back_knight(position) {
-    var cell = get_cell(position);
-    cell.innerHTML = null;
-    cell.classList.remove("knight");
-    cell.classList.remove("visited");
+function clear_position(position) {
+    $(get_ID_at_position(position)).removeClass("knight");
+    $(get_ID_at_position(position)).removeClass("visited");
 }
 
 function all_moves(position) {

@@ -73,8 +73,10 @@ function move_back() {
 
     // Case 2: More than one move made
 
+    // Clear the last position
     var last_pos = this.trace.pop();
-    move_back_knight(last_pos);
+    clear_position(last_pos);
+
     modify_weight(last_pos, 1);
     this.cur_pos = this.trace.pop();
     if (this.cur_pos !== undefined) {
