@@ -1,60 +1,56 @@
-function get_cell(position) {
-    pos_x = Number(position[0]);
-    pos_y = Number(position[1]);
-    return chessBoard.table.rows[pos_x].cells[pos_y];
+function get_cell(coordinates) {
+    return chessBoard.table.rows[coordinates.x].cells[coordinates.y];
 }
 
-function get_ID_at_position(position) {
-    // It returns the ID of the cell at the given coordinated
-    // E.g.: position: (3,2) --> cell with ID "3_2"
-    return "#" + position[0] + "_" + position[1];
+function get_ID_at_coordinates(coordinates) {
+    // It returns the ID of the cell at the given coordinates
+    // E.g.: coordinates: (3,2) --> cell with ID "3_2"
+    return "#" + coordinates.x + "_" + coordinates.y;
 }
 
-function add_knight(position) {
-    var cell = get_cell(position);
+function add_knight(cur_coordinates) {
+    var cell = chessBoard.table.rows[cur_coordinates.x].cells[cur_coordinates.y];
     cell.classList.remove("visited");
     cell.classList.add("knight");
 }
 
-function clear_knight(position) {
-    if (position.length === 0) {
+function clear_knight(coordinates) {
+    if (coordinates === undefined) {
         return;
     }
-    var cell = get_cell(position);
+    var cell = get_cell(coordinates);
     cell.classList.add("visited");
     // cell.textContent = null;
     cell.classList.remove("knight");
 }
 
-function clear_position(position) {
-    $(get_ID_at_position(position)).removeClass("knight");
-    $(get_ID_at_position(position)).removeClass("visited");
+function clear_coordinates(coordinates) {
+    $(get_ID_at_coordinates(coordinates)).removeClass("knight");
+    $(get_ID_at_coordinates(coordinates)).removeClass("visited");
 }
 
-function all_moves(position) {
-    pos_x = Number(position[0]);
-    pos_y = Number(position[1]);
-    var all_moves_list = [
-        [pos_x + 1, pos_y + 2],
-        [pos_x + 1, pos_y - 2],
-        [pos_x - 1, pos_y + 2],
-        [pos_x - 1, pos_y - 2],
-        [pos_x + 2, pos_y + 1],
-        [pos_x + 2, pos_y - 1],
-        [pos_x - 2, pos_y + 1],
-        [pos_x - 2, pos_y - 1],
+function all_moves(coordinates) {
+    return [
+        [coordinates.x + 1, coordinates.y + 2],
+        [coordinates.x + 1, coordinates.y - 2],
+        [coordinates.x - 1, coordinates.y + 2],
+        [coordinates.x - 1, coordinates.y - 2],
+        [coordinates.x + 2, coordinates.y + 1],
+        [coordinates.x + 2, coordinates.y - 1],
+        [coordinates.x - 2, coordinates.y + 1],
+        [coordinates.x - 2, coordinates.y - 1],
     ];
-    return all_moves_list;
 }
 
-function is_position_bounded(position) {
-    pos_x = Number(position[0]);
-    pos_y = Number(position[1]);
-    return (pos_x >= 0 && pos_x < 8 && pos_y >= 0 && pos_y < 8);
+function is_coordinates_bounded(coordinates) {
+    return (
+        coordinates.x >= 0 && coordinates.x < 8 &&
+        coordinates.y >= 0 && coordinates.y < 8
+    );
 }
 
-function is_cell_visited(position) {
-    var classes = get_cell(position).classList;
+function is_cell_visited(coordinates) {
+    var classes = get_cell(coordinates).classList;
     var is_visited = false;
     classes.forEach(function(class_name) {
         if (class_name == "visited") {
@@ -64,12 +60,12 @@ function is_cell_visited(position) {
     return is_visited;
 }
 
-function is_valid_move(position) {
-    var pos_valid = is_position_bounded(position);
+function is_valid_move(coordinates) {
+    var pos_valid = is_coordinates_bounded(coordinates);
     if (!pos_valid) {
         return pos_valid;
     }
-    var is_visited = is_cell_visited(position);
+    var is_visited = is_cell_visited(coordinates);
     return !is_visited;
 }
 
@@ -77,13 +73,13 @@ function clear_valid_moves() {
     $(".valid").removeClass("valid");
 }
 
-function add_valid_moves(position) {
+function add_valid_moves(coordinates) {
     clear_valid_moves();
     var valid_moves_list = [];
-    var all_moves_list = all_moves(position);
+    var all_moves_list = all_moves(coordinates);
     all_moves_list.forEach(function(ele) {
         if (is_valid_move(ele)) {
-            id = get_ID_at_position(ele);
+            id = get_ID_at_coordinates(ele);
             $(id).addClass("valid");
             valid_moves_list.push(ele);
         }
@@ -91,9 +87,9 @@ function add_valid_moves(position) {
     return valid_moves_list;
 }
 
-function get_valid_moves(position) {
+function get_valid_moves(coordinates) {
     var valid_moves_list = [];
-    var all_moves_list = all_moves(position);
+    var all_moves_list = all_moves(coordinates);
     all_moves_list.forEach(function(ele) {
         if (is_valid_move(ele)) {
             valid_moves_list.push(ele);
@@ -102,17 +98,10 @@ function get_valid_moves(position) {
     return valid_moves_list;
 }
 
-function get_min_valid_move(position) {
-    var valid_moves = get_valid_moves(position);
+function get_min_valid_move(coordinates) {
+    var valid_moves = get_valid_moves(coordinates);
     var min_valid_move;
     var min_value = 8;
-    // valid_moves.forEach(function (vm) {
-    //     var value = chessBoard.board_values[vm[0]][vm[1]];
-    //     if (value < min_value) {
-    // //         min_value = value;
-    //         min_valid_move = vm;
-    //     }
-    // });
     for (var i = 0; i < valid_moves.length; i++) {
         var value = chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]];
         if (value < min_value) {
@@ -123,8 +112,8 @@ function get_min_valid_move(position) {
     return min_valid_move;
 }
 
-function modify_weight(position, weight) {
-    var valid_moves = get_valid_moves(position);
+function modify_weight(coordinates, weight) {
+    var valid_moves = get_valid_moves(coordinates);
     // console.log(valid_moves);
     for (var i = 0; i < valid_moves.length; i++) {
         chessBoard.board_values[valid_moves[i][0]][valid_moves[i][1]] += weight;
@@ -162,15 +151,13 @@ function modify_title(message) {
     $("#game-title").text(message);
 }
 
-function is_move_valid(cur_position, move) {
-    // It checks the current position, and move player is trying to make. 
+function is_move_valid(coordinates, move) {
+    // It checks the current coordinates, and move player is trying to make. 
     // It returns true if move is one of the valid moves else false
-    posX = Number(move[0]);
-    posY = Number(move[1]);
     is_valid = false;
-    var valid_moves = get_valid_moves(cur_position);
+    var valid_moves = get_valid_moves(coordinates);
     for (var i = 0; i < valid_moves.length; i++) {
-        if (posX === valid_moves[i][0] && posY === valid_moves[i][1]) {
+        if (coordinates.x === valid_moves[i][0] && coordinates.y === valid_moves[i][1]) {
             is_valid = true;
         }
     }

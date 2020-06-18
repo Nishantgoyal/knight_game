@@ -1,5 +1,4 @@
 var state = {
-    cur_pos: [],
     cur_coord: undefined,
     trace: [],
     print_trace: function() {
@@ -9,7 +8,7 @@ var state = {
         }
     },
     initialise: function() {
-        this.cur_pos = [];
+        this.cur_coord = undefined;
         this.trace = [];
     },
     move: move,
@@ -30,43 +29,41 @@ function move(posX, posY) {
 
     if (first_move) {
         // If it is the first move, just move it there
-        this.cur_pos = [posX, posY];
         this.cur_coord = {
             x: posX,
             y: posY
         }
-        this.trace.push(this.cur_pos);
-        add_knight(this.cur_pos);
+        this.trace.push(this.cur_coord);
+        add_knight(this.cur_coord);
         hightlight_valid_moves(this.cur_coord);
-        modify_weight(this.cur_pos, -1);
+        modify_weight(this.cur_coord, -1);
     } else {
         // If it is not first move
         // Check if it is a valid move
-        is_valid = is_move_valid(this.cur_pos, [posX, posY]);
+        is_valid = is_move_valid(this.cur_coord, [posX, posY]);
         if (is_valid) {
-            clear_knight(this.cur_pos);
-            this.cur_pos = [posX, posY];
+            clear_knight(this.cur_coord);
             this.cur_coord = {
                 x: posX,
                 y: posY
             }
             hightlight_valid_moves(this.cur_coord);
 
-            this.trace.push(this.cur_pos);
-            modify_weight(this.cur_pos, -1);
-            add_knight(this.cur_pos);
-            end_game(this.cur_pos);
+            this.trace.push(this.cur_coord);
+            modify_weight(this.cur_coord, -1);
+            add_knight(this.cur_coord);
+            end_game(this.cur_coord);
         }
     }
 }
 
-function end_game(position) {
+function end_game(coordinates) {
     var visited_count = document.querySelectorAll(".visited");
     if (visited_count.length === 63) {
         modify_title("You Win.");
         return;
     }
-    var valid_moves = get_valid_moves(position);
+    var valid_moves = get_valid_moves(coordinates);
     if (valid_moves.length === 0) {
         modify_title("Game Over. No moves left");
     }
@@ -83,21 +80,22 @@ function move_back() {
 
     // Case 2: More than one move made
 
-    // Clear the last position
+    // Clear the last coordinates
     var last_pos = this.trace.pop();
-    clear_position(last_pos);
+    console.log(last_pos);
+    clear_coordinates(last_pos);
 
     // Increase board values for valid moves
     modify_weight(last_pos, 1);
 
-    this.cur_pos = this.trace.pop();
-    if (this.cur_pos !== undefined) {
+    this.cur_coord = this.trace.pop();
+    if (this.cur_coord !== undefined) {
         hightlight_valid_moves(this.cur_coord);
 
-        this.trace.push(this.cur_pos);
-        add_knight(this.cur_pos);
+        this.trace.push(this.cur_coord);
+        add_knight(this.cur_coord);
     } else {
         $(".highlight").removeClass("highlight");
-        this.cur_pos = [];
+        this.cur_coord = [];
     }
 }
