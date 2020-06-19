@@ -39,7 +39,6 @@ function create_table() {
 function create_cell(i, j) {
     var cell = document.createElement("td");
     var ID = i + "_" + j;
-    // console.log(ID);
     cell.id = ID;
     cell.classList.add("cell");
     if ((i + j) % 2 === 0) {
@@ -55,7 +54,24 @@ function create_cell(i, j) {
 }
 
 function click_listener_on_cell() {
-    posX = this.getAttribute("posX");
-    posY = this.getAttribute("posY");
-    state.move(posX, posY);
+    coordinate = {
+        x: Number(this.getAttribute("posx")),
+        y: Number(this.getAttribute("posy"))
+    }
+    state.move(coordinate);
+}
+
+function update_board(move_type = "forward") {
+    var id = "#" + state.cur_coord.x + "_" + state.cur_coord.y;
+    $(".knight").removeClass("knight");
+    $(".visited").removeClass("visited");
+    $(id).addClass("knight");
+    modify_weight(move_type);
+    state.trace.forEach(function(coordinate) {
+        var id = get_ID_at_coordinates(coordinate)
+        $(id).addClass("visited");
+    });
+    add_valid_class_to_valid_moves(state.cur_coord);
+    end_game();
+
 }

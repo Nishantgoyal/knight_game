@@ -34,7 +34,7 @@
     transition: ease-in-out 1s;
 }
 
-.highlight {
+.valid {
     box-shadow: inset 0vh 0vh 1vh 0.5vh cyan;
 }
 
@@ -53,7 +53,7 @@
         height: 10vw;
         width: 10vw;
     }
-    .highlight {
+    .valid {
         box-shadow: inset 0vw 0vw 1vw 0.5vw cyan;
     }
     .visited {
