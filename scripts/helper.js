@@ -67,8 +67,8 @@ function get_min_valid_move() {
     var min_value = 8;
     for (var i = 0; i < valid_moves.length; i++) {
         var valid_move = valid_moves[i];
-        var x = Number(valid_move.getAttribute("posx"));
-        var y = Number(valid_move.getAttribute("posy"));
+        var x = Number(valid_move.getAttribute("posX"));
+        var y = Number(valid_move.getAttribute("posY"));
 
         var value = chessBoard.board_values[x][y];
         if (value < min_value) {
@@ -90,8 +90,8 @@ function modify_weight(move_type) {
     var valid_moves = $('.valid');
     for (var i = 0; i < valid_moves.length; i++) {
         var move = valid_moves[i];
-        x = Number(move.getAttribute("posx"));
-        y = Number(move.getAttribute("posy"));
+        x = Number(move.getAttribute("posX"));
+        y = Number(move.getAttribute("posY"));
         chessBoard.board_values[x][y] += weight;
     }
 }

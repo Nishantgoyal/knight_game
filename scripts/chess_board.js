@@ -55,8 +55,8 @@ function create_cell(i, j) {
 
 function click_listener_on_cell() {
     coordinate = {
-        x: Number(this.getAttribute("posx")),
-        y: Number(this.getAttribute("posy"))
+        x: Number(this.getAttribute("posX")),
+        y: Number(this.getAttribute("posY"))
     }
     state.move(coordinate);
 }
