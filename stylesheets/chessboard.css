@@ -1,23 +1,77 @@
+body {
+    margin: 0;
+}
+
+
+/* Header */
+
+#game-title {
+    width: 100vw;
+    height: 5vh;
+    line-height: 5vh;
+    background-color: midnightblue;
+    color: mintcream;
+    text-align: center;
+    margin: 0;
+}
+
+
+/* Main Panel */
+
+@media screen and (orientation: portrait) {
+    .main-panel {
+        height: 15vh;
+        width: 100vw;
+        display: block;
+    }
+}
+
+
+/* Game Panel */
+
+.game-panel {
+    background-color: lightblue;
+    width: 100vw;
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .chessboard {
-    background-color: lightgoldenrodyellow;
-    height: 80vh;
+    border-collapse: collapse;
+}
+
+.chessboard {
+    border: 1px solid rebeccapurple;
+    height: 85vh;
     width: 80vh;
+}
+
+.control-panel {
+    height: 5vh;
+    width: 80vh;
+    background-color: violet;
+    line-height: 5vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.row {
+    font-size: 0;
 }
 
 .cell {
     padding: 0;
     height: 10vh;
     width: 10vh;
-    border-radius: 0.2rem;
-    font-size: 5vh;
+    display: inline-block;
     text-align: center;
-    transition: all 0.3s ease-in-out;
 }
 
 .knight {
     background-image: url(../images/knight_image.png);
     background-size: cover;
-    transition: all 0.3s ease-in-out;
 }
 
 .white {
@@ -31,7 +85,6 @@
 .visited:hover {
     background-color: black;
     color: white;
-    transition: ease-in-out 1s;
 }
 
 .valid {
@@ -44,9 +97,15 @@
 }
 
 @media screen and (orientation: portrait) {
+    .control-panel {
+        height: 5vw;
+        width: 80vw;
+        line-height: 5vw;
+        background-color: violet;
+    }
     .chessboard {
         background-color: lightgoldenrodyellow;
-        height: 80vw;
+        height: 85vw;
         width: 80vw;
     }
     .cell {
@@ -60,4 +119,15 @@
         background-color: gainsboro;
         box-shadow: inset 0vw 0vw 1vw 0.5vw rgba(90, 90, 90, 0.75);
     }
+}
+
+i {
+    padding-left: 1vw;
+    color: white;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    color: white;
 }

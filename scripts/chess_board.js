@@ -18,15 +18,21 @@ function initialise_board_values() {
 }
 
 function initialise_chessboard() {
+    var control_panel = document.querySelector(".control-panel");
     document.querySelector(".chessboard").innerHTML = null;
+    console.log(control_panel);
+    document.querySelector(".chessboard").appendChild(control_panel);
     document.querySelector(".chessboard").appendChild(create_table());
     this.table = document.querySelector(".chessboard table");
 }
 
 function create_table() {
-    var table = document.createElement("table");
+    var table = document.createElement("div");
+    // table.addClass("table");
+    table.classList.add("table");
     for (var i = 0; i < 8; i++) {
-        var row = document.createElement("tr");
+        var row = document.createElement("div");
+        row.classList.add("row");
         for (var j = 0; j < 8; j++) {
             var cell = create_cell(i, j);
             row.appendChild(cell);
@@ -37,7 +43,7 @@ function create_table() {
 }
 
 function create_cell(i, j) {
-    var cell = document.createElement("td");
+    var cell = document.createElement("div");
     var ID = i + "_" + j;
     cell.id = ID;
     cell.classList.add("cell");
@@ -55,8 +61,8 @@ function create_cell(i, j) {
 
 function click_listener_on_cell() {
     coordinate = {
-        x: Number(this.getAttribute("posx")),
-        y: Number(this.getAttribute("posy"))
+        x: Number(this.getAttribute("posX")),
+        y: Number(this.getAttribute("posY"))
     }
     state.move(coordinate);
 }
