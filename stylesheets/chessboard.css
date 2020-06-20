@@ -9,28 +9,22 @@ body {
     width: 100vw;
     height: 5vh;
     line-height: 5vh;
-    background-color: midnightblue;
+    background: #556270;
     color: mintcream;
     text-align: center;
     margin: 0;
 }
 
 
-/* Main Panel */
-
-@media screen and (orientation: portrait) {
-    .main-panel {
-        height: 15vh;
-        width: 100vw;
-        display: block;
-    }
-}
-
-
 /* Game Panel */
 
 .game-panel {
-    background-color: lightblue;
+    background: #70e1f5;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #ffd194, #70e1f5);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #ffd194, #70e1f5);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     width: 100vw;
     height: 95vh;
     display: flex;
@@ -43,7 +37,7 @@ body {
 }
 
 .chessboard {
-    border: 1px solid rebeccapurple;
+    /* border: 1px solid rebeccapurple; */
     height: 85vh;
     width: 80vh;
 }
@@ -51,7 +45,9 @@ body {
 .control-panel {
     height: 5vh;
     width: 80vh;
-    background-color: violet;
+    background: #556270;
+    /* background-color: transparent; */
+    color: white;
     line-height: 5vh;
     display: flex;
     justify-content: space-between;
@@ -75,15 +71,27 @@ body {
 }
 
 .white {
-    background-color: lightcyan;
+    /* background-color: lightcyan; */
+    background: #FFEFBA;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFFFF, #FFEFBA);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .black {
-    background-color: darkcyan;
+    /* background-color: darkcyan; */
+    background: #0F2027;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .visited:hover {
-    background-color: black;
+    background: black;
     color: white;
 }
 
@@ -92,7 +100,7 @@ body {
 }
 
 .visited {
-    background-color: gainsboro;
+    background: gainsboro;
     box-shadow: inset 0vh 0vh 1vh 0.5vh rgba(90, 90, 90, 0.75);
 }
 
@@ -123,7 +131,7 @@ body {
 
 i {
     padding-left: 1vw;
-    color: white;
+    /* color: white; */
 }
 
 button {
