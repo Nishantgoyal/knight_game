@@ -18,10 +18,7 @@ function initialise_board_values() {
 }
 
 function initialise_chessboard() {
-    var control_panel = document.querySelector(".control-panel");
     document.querySelector(".chessboard").innerHTML = null;
-    console.log(control_panel);
-    document.querySelector(".chessboard").appendChild(control_panel);
     document.querySelector(".chessboard").appendChild(create_table());
     this.table = document.querySelector(".chessboard table");
 }
@@ -67,11 +64,24 @@ function click_listener_on_cell() {
     state.move(coordinate);
 }
 
+function add_knight() {
+    console.clear();
+    $(".knight").html("");
+    $(".knight").removeClass("knight");
+    var id = "#" + state.cur_coord.x + "_" + state.cur_coord.y;
+    $(id).addClass("knight");
+    console.log($(id));
+    var div = document.createElement("div");
+    // div.innerText("vkdfbkvbdk");
+    // img.setAttribute("src", "images/knight_image.png");
+    $(id).html(div);
+    // cell.appendChil/d(img);
+}
+
 function update_board(move_type = "forward") {
     var id = "#" + state.cur_coord.x + "_" + state.cur_coord.y;
-    $(".knight").removeClass("knight");
     $(".visited").removeClass("visited");
-    $(id).addClass("knight");
+    add_knight();
     modify_weight(move_type);
     state.trace.forEach(function(coordinate) {
         var id = get_ID_at_coordinates(coordinate)
