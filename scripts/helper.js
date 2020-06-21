@@ -102,7 +102,7 @@ function sleep(ms) {
 }
 
 function modify_title(message) {
-    $("#game-title").text(message);
+    $("#game-title span").text(message);
 }
 
 function is_move_valid(coordinates) {
