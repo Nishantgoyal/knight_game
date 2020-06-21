@@ -20,7 +20,6 @@ function initialise_board_values() {
 function initialise_chessboard() {
     var control_panel = document.querySelector(".control-panel");
     document.querySelector(".chessboard").innerHTML = null;
-    console.log(control_panel);
     document.querySelector(".chessboard").appendChild(control_panel);
     document.querySelector(".chessboard").appendChild(create_table());
     this.table = document.querySelector(".chessboard table");
