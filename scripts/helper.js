@@ -102,7 +102,10 @@ function sleep(ms) {
 }
 
 function modify_title(message) {
-    $("#game-title span").text(message);
+    $("#message").text(message);
+    $("#message").fadeIn(500);
+    $("#message").fadeOut(5000);
+
 }
 
 function is_move_valid(coordinates) {

@@ -7,7 +7,12 @@ body {
 
 .full-header {
     width: 100vw;
-    background: #556270;
+    background: #000000;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #434343, #000000);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #434343, #000000);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     display: flex;
     justify-content: center;
 }
@@ -24,22 +29,37 @@ body {
     margin: 0;
 }
 
+#game-title span {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
 @media screen and (orientation: portrait) {
     #game-title {
         width: 80vw;
     }
 }
 
+#message {
+    position: absolute;
+    background: #000000;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #434343, #000000);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #434343, #000000);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: wheat;
+    width: 100vw;
+    text-align: center;
+}
+
 
 /* Game Panel */
 
 .game-panel {
-    background: #70e1f5;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #ffd194, #70e1f5);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #ffd194, #70e1f5);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #232526;
+    background: -webkit-linear-gradient(to bottom, #414345, #232526);
+    background: linear-gradient(to bottom, #414345, #232526);
     width: 100vw;
     height: 95vh;
     display: flex;
@@ -100,12 +120,11 @@ body {
 }
 
 .black {
-    /* background-color: darkcyan; */
-    background: #0F2027;
+    background: #603813;
     /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
+    background: -webkit-linear-gradient(to bottom, #b29f94, #603813);
     /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
+    background: linear-gradient(to bottom, #b29f94, #603813);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
@@ -120,7 +139,12 @@ body {
 }
 
 .visited {
-    background: gainsboro;
+    background: #000000;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #434343, #000000);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #434343, #000000);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     box-shadow: inset 0vh 0vh 1vh 0.5vh rgba(90, 90, 90, 0.75);
 }
 
