@@ -101,11 +101,12 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function display_message(message) {
+function display_message(message, persist = false) {
     $("#message").text(message);
     $("#message").stop(true, true).fadeIn(500);
-    $("#message").stop(true, true).fadeOut(5000);
-
+    if (!persist) {
+        $("#message").stop(true, true).fadeOut(5000);
+    }
 }
 
 function is_move_valid(coordinates) {

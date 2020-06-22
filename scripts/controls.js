@@ -6,7 +6,7 @@ var controls = {
 };
 controls.info.addEventListener("click", function() {
     message = "Find a Sequence of moves for the knight such that it visits every square exactly once";
-    display_message(message);
+    display_message(message, persist = true);
 });
 
 controls.reset.addEventListener("click", function() {
@@ -27,9 +27,9 @@ controls.back.addEventListener("click", function() {
 
 controls.solution.addEventListener("click", function() {
     if (state.trace.length > 0) {
-        display_message("Please reset the board and click on a cell. Then click on solve button");
+        display_message("Please reset the board and click on a cell. Then click on solve button.", persist = true);
     } else if (state.cur_coord === undefined) {
-        display_message("Please click on a cell. Then click on solve button");
+        display_message("Please click on a cell. Then click on solve button", persist = true);
     } else {
         solve();
     }

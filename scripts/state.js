@@ -10,13 +10,13 @@ var state = {
 };
 
 function move(coordinate) {
+    display_message("");
     if (this.cur_coord === undefined) {
         this.cur_coord = coordinate;
         update_board();
     } else {
         is_valid = is_move_valid(coordinate);
         if (is_valid) {
-            display_message("");
             this.trace.push(this.cur_coord);
             this.cur_coord = coordinate;
             update_board();
@@ -29,12 +29,12 @@ function move(coordinate) {
 function end_game() {
     var visited_count = $(".visited").length;
     if (visited_count === 63) {
-        display_message("You Win.");
+        display_message("You Win.", persist = true);
         return;
     }
     var valid_moves = $(".valid").length;
     if (valid_moves === 0) {
-        display_message("Game Over. No moves left");
+        display_message("Game Over. No More moves", persist = true);
     }
 }
 
