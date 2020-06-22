@@ -9,9 +9,9 @@ body {
     width: 100vw;
     background: #000000;
     /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #434343, #000000);
+    background: -webkit-linear-gradient(to bottom, #434343, #000000);
     /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #434343, #000000);
+    background: linear-gradient(to bottom, #434343, #000000);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     display: flex;
     justify-content: center;
@@ -19,18 +19,19 @@ body {
 
 #game-title {
     width: 80vh;
-    height: 5vh;
-    line-height: 5vh;
+    height: 8vh;
+    line-height: 8vh;
     color: mintcream;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: 0;
+    font-size: 1.5rem;
 }
 
 #game-title span {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 800;
 }
 
@@ -44,12 +45,13 @@ body {
     position: absolute;
     background: #000000;
     /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #434343, #000000);
+    background: -webkit-linear-gradient(to bottom, #434343, #000000);
     /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #434343, #000000);
+    background: linear-gradient(to bottom, #434343, #000000);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: wheat;
     width: 100vw;
+    /* font-size: 1.5rem; */
     text-align: center;
 }
 
@@ -78,7 +80,7 @@ body {
     -moz-box-shadow: 10px 10px 5px 0px rgba(30, 19, 12, 0.4), 5px 5px 5px 0px rgba(30, 19, 12, 0.7);
     box-shadow: 10px 10px 5px 0px rgba(30, 19, 12, 0.4), 5px 5px 5px 0px rgba(30, 19, 12, 0.7);
     border: 1.5vh solid #1e130c;
-    border-radius: 2%;
+    border-radius: 1%;
 }
 
 @media screen and (orientation: portrait) {
@@ -112,6 +114,7 @@ body {
     background: url("../images/knight_image.png");
     background-size: cover;
     height: 100%;
+    display: none;
 }
 
 .white {
@@ -151,6 +154,7 @@ body {
     background: linear-gradient(to right, #434343, #000000);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     box-shadow: inset 0vh 0vh 1vh 0.5vh rgba(90, 90, 90, 0.75);
+    transition: ease-in 100ms;
 }
 
 @media screen and (orientation: portrait) {

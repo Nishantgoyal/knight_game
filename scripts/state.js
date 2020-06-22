@@ -38,7 +38,11 @@ function end_game() {
 
 function move_back() {
     if (this.trace.length === 0) {
-        modify_title("No move to go Back. Please reset the board. ");
+        if (this.cur_coord === undefined) {
+            modify_title("No move to go Back.");
+        } else {
+            modify_title("No move to go Back. Please reset the board. ");
+        }
         return;
     }
     modify_title("Moved back");
