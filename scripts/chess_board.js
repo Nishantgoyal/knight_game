@@ -74,14 +74,12 @@ function modify_visited() {
 }
 
 function update_board(move_type = "forward") {
-    console.clear();
     $(".knight div").fadeOut(chessBoard.speed / 2, function() {
         $(this).html("");
     });
     $(".knight").removeClass("knight");
     var id = "#" + state.cur_coord.x + "_" + state.cur_coord.y;
     $(id).addClass("knight");
-    console.log($(id));
     var div = document.createElement("div");
     $(id).html(div);
     $(id + " div").fadeIn(chessBoard.speed / 2);

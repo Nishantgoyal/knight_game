@@ -16,9 +16,12 @@ function move(coordinate) {
     } else {
         is_valid = is_move_valid(coordinate);
         if (is_valid) {
+            display_message("");
             this.trace.push(this.cur_coord);
             this.cur_coord = coordinate;
             update_board();
+        } else {
+            display_message("Invalid Move");
         }
     }
 }
