@@ -41,6 +41,17 @@ body {
     }
 }
 
+i {
+    padding: 1vw;
+    line-height: 8vh;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    color: white;
+}
+
 #message {
     position: absolute;
     background: #000000;
@@ -166,15 +177,5 @@ body {
 
 .visited:hover {
     background: black;
-    color: white;
-}
-
-i {
-    padding-left: 1vw;
-}
-
-button {
-    border: none;
-    background-color: transparent;
     color: white;
 }
