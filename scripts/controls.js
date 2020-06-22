@@ -4,9 +4,10 @@ var controls = {
     solution: document.getElementById("solution"),
     info: document.getElementById("info")
 };
-// controls.info.addEventListener("click", function() {
-//     modify_title("A knight's tour is a sequence of moves of a knight on a chessboard such that the knight visits every square exactly once");
-// });
+controls.info.addEventListener("click", function() {
+    message = "Find a Sequence of moves for the knight such that it visits every square exactly once";
+    display_message(message);
+});
 
 controls.reset.addEventListener("click", function() {
     // Behaviour of Reset button
@@ -14,7 +15,7 @@ controls.reset.addEventListener("click", function() {
     if (state.cur_coord === undefined) {
         return;
     }
-    modify_title("Board Reset");
+    display_message("Board Reset");
     chessBoard.board_values = initialise_board_values();
     chessBoard.initialise();
     state.initialise();
@@ -26,9 +27,9 @@ controls.back.addEventListener("click", function() {
 
 controls.solution.addEventListener("click", function() {
     if (state.trace.length > 0) {
-        modify_title("Please reset the board and click on a cell. Then click on solve button");
+        display_message("Please reset the board and click on a cell. Then click on solve button");
     } else if (state.cur_coord === undefined) {
-        modify_title("Please click on a cell. Then click on solve button");
+        display_message("Please click on a cell. Then click on solve button");
     } else {
         solve();
     }

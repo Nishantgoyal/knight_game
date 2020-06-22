@@ -101,7 +101,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function modify_title(message) {
+function display_message(message) {
     $("#message").text(message);
     $("#message").stop(true, true).fadeIn(500);
     $("#message").stop(true, true).fadeOut(5000);
