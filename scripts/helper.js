@@ -103,8 +103,8 @@ function sleep(ms) {
 
 function modify_title(message) {
     $("#message").text(message);
-    $("#message").fadeIn(500);
-    $("#message").fadeOut(5000);
+    $("#message").stop(true, true).fadeIn(500);
+    $("#message").stop(true, true).fadeOut(5000);
 
 }
 
