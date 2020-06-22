@@ -79,7 +79,6 @@ function add_knight() {
 }
 
 function update_board(move_type = "forward") {
-    var id = "#" + state.cur_coord.x + "_" + state.cur_coord.y;
     $(".visited").removeClass("visited");
     add_knight();
     modify_weight(move_type);
