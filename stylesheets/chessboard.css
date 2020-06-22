@@ -35,6 +35,26 @@ body {
     font-weight: 800;
 }
 
+@media screen and (max-width: 600px) {
+    #game-title {
+        font-size: 1rem;
+    }
+    #game-title span {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    #game-title {
+        font-size: 1rem;
+    }
+    #game-title span {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+}
+
 @media screen and (orientation: portrait) {
     #game-title {
         width: 80vw;
