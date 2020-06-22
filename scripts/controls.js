@@ -1,23 +1,23 @@
 var controls = {
     reset: document.getElementById("reset"),
     back: document.getElementById("back"),
-    solution: document.getElementById("solution")
+    solution: document.getElementById("solution"),
+    info: document.getElementById("info")
 };
-
+controls.info.addEventListener("click", function() {
+    message = "Find a Sequence of moves for the knight such that it visits every square exactly once";
+    display_message(message);
+});
 
 controls.reset.addEventListener("click", function() {
     // Behaviour of Reset button
-
-    // 1. Resets the game title
-    modify_title("Knight Tour");
-
-    // 2. Resets the board values
+    chessBoard.speed = 1000;
+    if (state.cur_coord === undefined) {
+        return;
+    }
+    display_message("Board Reset");
     chessBoard.board_values = initialise_board_values();
-
-    // 3. Initialises the chessboard
     chessBoard.initialise();
-
-    // 4. Initialise the state
     state.initialise();
 });
 
@@ -27,9 +27,9 @@ controls.back.addEventListener("click", function() {
 
 controls.solution.addEventListener("click", function() {
     if (state.trace.length > 0) {
-        modify_title("Please reset the board and click on a cell. Then click on solve button");
+        display_message("Please reset the board and click on a cell. Then click on solve button");
     } else if (state.cur_coord === undefined) {
-        modify_title("Please click on a cell. Then click on solve button");
+        display_message("Please click on a cell. Then click on solve button");
     } else {
         solve();
     }
@@ -37,10 +37,11 @@ controls.solution.addEventListener("click", function() {
 
 async function solve() {
     // var cur_pos = state.trace[0];
+    chessBoard.speed = 0;
     for (var i = 1; i < 64; i++) {
         cur_pos = get_min_valid_move();
         state.move(cur_pos);
-        await sleep(500);
+        await sleep(400);
         // break;
     }
 }

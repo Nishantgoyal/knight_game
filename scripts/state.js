@@ -26,20 +26,26 @@ function move(coordinate) {
 function end_game() {
     var visited_count = $(".visited").length;
     if (visited_count === 63) {
-        modify_title("You Win.");
+        display_message("You Win.");
         return;
     }
     var valid_moves = $(".valid").length;
     if (valid_moves === 0) {
-        modify_title("Game Over. No moves left");
+        display_message("Game Over. No moves left");
     }
 }
 
 
 function move_back() {
     if (this.trace.length === 0) {
+        if (this.cur_coord === undefined) {
+            display_message("No move to go Back.");
+        } else {
+            display_message("No move to go Back. Please reset the board. ");
+        }
         return;
     }
+    display_message("Moved back");
     this.cur_coord = this.trace.pop();
     update_board("back");
 }

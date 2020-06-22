@@ -1,7 +1,8 @@
 var chessBoard = {
     table: null,
     board_values: initialise_board_values(),
-    initialise: initialise_chessboard
+    initialise: initialise_chessboard,
+    speed: 1000
 };
 
 function initialise_board_values() {
@@ -64,29 +65,28 @@ function click_listener_on_cell() {
     state.move(coordinate);
 }
 
-function add_knight() {
+function modify_visited() {
+    $(".visited").removeClass("visited");
+    state.trace.forEach(function(coordinate) {
+        var id = get_ID_at_coordinates(coordinate)
+        $(id).addClass("visited");
+    });
+}
+
+function update_board(move_type = "forward") {
     console.clear();
-    $(".knight").html("");
+    $(".knight div").fadeOut(chessBoard.speed / 2, function() {
+        $(this).html("");
+    });
     $(".knight").removeClass("knight");
     var id = "#" + state.cur_coord.x + "_" + state.cur_coord.y;
     $(id).addClass("knight");
     console.log($(id));
     var div = document.createElement("div");
-    // div.innerText("vkdfbkvbdk");
-    // img.setAttribute("src", "images/knight_image.png");
     $(id).html(div);
-    // cell.appendChil/d(img);
-}
-
-function update_board(move_type = "forward") {
-    var id = "#" + state.cur_coord.x + "_" + state.cur_coord.y;
-    $(".visited").removeClass("visited");
-    add_knight();
+    $(id + " div").fadeIn(chessBoard.speed / 2);
     modify_weight(move_type);
-    state.trace.forEach(function(coordinate) {
-        var id = get_ID_at_coordinates(coordinate)
-        $(id).addClass("visited");
-    });
+    modify_visited();
     add_valid_class_to_valid_moves(state.cur_coord);
     end_game();
 
