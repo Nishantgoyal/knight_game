@@ -1,3 +1,7 @@
+#preload-01 {
+    background: url(../images/knight_image.png);
+}
+
 body {
     margin: 0;
 }
