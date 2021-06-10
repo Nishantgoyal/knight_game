@@ -1,0 +1,8 @@
+version: "3"
+services:
+  knight_game:
+    build:
+      context: .
+    image: knight_game_image
+    ports:
+      - 3030:3000

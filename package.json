@@ -1,0 +1,30 @@
+{
+  "name": "knight_game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node code/app.js",
+    "dev": "nodemon code/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nishantgoyal/knight_game.git"
+  },
+  "keywords": [
+    "Knight Game",
+    "Chess"
+  ],
+  "author": "Nishant Goyal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nishantgoyal/knight_game/issues"
+  },
+  "homepage": "https://github.com/Nishantgoyal/knight_game#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

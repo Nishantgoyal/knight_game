@@ -1,0 +1,11 @@
+version: "3"
+services:
+  knight_game:
+    build:
+      args:
+        my_env: dev
+    volumes:
+      - ./code:/app/code:ro
+    environment:
+      - my_env=dev
+    command: "npm run dev"
