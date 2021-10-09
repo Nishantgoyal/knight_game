@@ -1,6 +1,0 @@
-version: "3"
-services:
-  knight_game:
-    build:
-      args:
-        my_env: prod
