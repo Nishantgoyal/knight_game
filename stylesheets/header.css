@@ -1,21 +1,47 @@
-#preload-01 {
-  background: url(../images/knight_image.png);
-}
-
-body {
-  margin: 0;
-}
-
-/* Header */
-
+/* 
+<div class="full-header">
+  <div id="game-title">
+    <div class="controls">
+      <i
+        id="back"
+        class="fa fa-arrow-left"
+        aria-hidden="true"
+        title="Back"
+      ></i>
+      <i
+        id="reset"
+        class="fa fa-refresh"
+        aria-hidden="true"
+        title="Reset"
+      ></i>
+    </div>
+    <span>Knight Tour</span>
+    <div class="controls">
+      <i
+        id="solution"
+        class="fa fa-lightbulb-o"
+        aria-hidden="true"
+        title="Solution"
+      ></i>
+      <i
+        id="info"
+        class="fa fa-info-circle"
+        aria-hidden=" true "
+        title="info"
+      ></i>
+    </div>
+  </div>
+</div>
+*/
+/* 
+  Class `full-header`
+    - It is displayed on top as a full header
+    - TODO: Change to an `id`
+*/
 .full-header {
   width: 100vw;
   background: #000000;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #434343, #000000);
-  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to bottom, #434343, #000000);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   display: flex;
   justify-content: center;
 }
@@ -38,20 +64,24 @@ body {
   font-weight: 800;
 }
 
-@media screen and (max-width: 600px), screen and (max-height: 600px) {
+@media screen and (max-width: 600px),
+screen and (max-height: 600px) {
   #game-title {
     font-size: 1rem;
   }
+
   #game-title span {
     font-size: 1.5rem;
     font-weight: 600;
   }
 }
 
-@media screen and (max-width: 400px), screen and (max-height: 400px) {
+@media screen and (max-width: 400px),
+screen and (max-height: 400px) {
   #game-title {
     font-size: 1rem;
   }
+
   #game-title span {
     font-size: 1rem;
     font-weight: 600;
@@ -83,7 +113,8 @@ i {
   text-align: center;
 }
 
-@media screen and (max-width: 600px), screen and (max-height: 600px) {
+@media screen and (max-width: 600px),
+screen and (max-height: 600px) {
   #message {
     font-size: 1rem;
   }
