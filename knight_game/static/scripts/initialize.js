@@ -1,2 +1,2 @@
 chessBoard.initialise();
-state.initialise()
+state.initialise();
