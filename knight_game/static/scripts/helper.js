@@ -105,8 +105,7 @@ const create_table = () => {
 
 const create_cell = (i, j) => {
   const cell = document.createElement("div");
-  const ID = `${i}_${j}`;
-  cell.id = ID;
+  cell.id = `${i}_${j}`;
   cell.classList.add("cell");
   if ((i + j) % 2 === 0) {
     cell.classList.add("white");
@@ -115,17 +114,15 @@ const create_cell = (i, j) => {
   }
   cell.setAttribute("posX", i);
   cell.setAttribute("posY", j);
-  cell.addEventListener("click", click_listener_on_cell);
+  cell.addEventListener("click", (event) => {
+    coordinate = {
+      x: Number(event.target.getAttribute("posX")),
+      y: Number(event.target.getAttribute("posY")),
+    };
+    state.move(coordinate);
+  });
   return cell;
 };
-
-function click_listener_on_cell() {
-  coordinate = {
-    x: Number(this.getAttribute("posX")),
-    y: Number(this.getAttribute("posY")),
-  };
-  state.move(coordinate);
-}
 
 const modify_visited = () => {
   $(".visited").removeClass("visited");
