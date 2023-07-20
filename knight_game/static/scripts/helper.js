@@ -21,9 +21,9 @@ const is_coordinates_bounded = (coordinates) =>
 const add_valid_class_to_valid_moves = (coordinates) => {
   $(".valid").removeClass("valid");
   all_moves(coordinates).forEach((ele) => {
-    var id = get_ID_at_coordinates(ele);
-    var pos_valid = is_coordinates_bounded(ele);
-    var is_visited = $(id).hasClass("visited");
+    const id = get_ID_at_coordinates(ele);
+    const pos_valid = is_coordinates_bounded(ele);
+    const is_visited = $(id).hasClass("visited");
     if (pos_valid && !is_visited) {
       $(id).addClass("valid");
     }
@@ -31,15 +31,14 @@ const add_valid_class_to_valid_moves = (coordinates) => {
 };
 
 const get_min_valid_move = () => {
-  var valid_moves = $(".valid");
-  var min_valid_move;
-  var min_value = 8;
-  for (var i = 0; i < valid_moves.length; i++) {
-    var valid_move = valid_moves[i];
-    var x = Number(valid_move.getAttribute("posX"));
-    var y = Number(valid_move.getAttribute("posY"));
-
-    var value = chessBoard.board_values[x][y];
+  const valid_moves = $(".valid");
+  let min_valid_move;
+  let min_value = 8;
+  for (let i = 0; i < valid_moves.length; i++) {
+    const valid_move = valid_moves[i];
+    let x = Number(valid_move.getAttribute("posX"));
+    let y = Number(valid_move.getAttribute("posY"));
+    const value = chessBoard.board_values[x][y];
     if (value < min_value) {
       min_value = value;
       min_valid_move = {
@@ -52,13 +51,13 @@ const get_min_valid_move = () => {
 };
 
 const modify_weight = (move_type) => {
-  var weight = -1;
+  let weight = -1;
   if (move_type === "back") {
     weight = 1;
   }
-  var valid_moves = $(".valid");
-  for (var i = 0; i < valid_moves.length; i++) {
-    var move = valid_moves[i];
+  const valid_moves = $(".valid");
+  for (let i = 0; i < valid_moves.length; i++) {
+    const move = valid_moves[i];
     x = Number(move.getAttribute("posX"));
     y = Number(move.getAttribute("posY"));
     chessBoard.board_values[x][y] += weight;
