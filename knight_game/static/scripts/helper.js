@@ -76,3 +76,89 @@ const display_message = (message, persist = false) => {
 
 const is_move_valid = (coordinates) =>
   $("#" + coordinates.x + "_" + coordinates.y).hasClass("valid");
+
+const initialise_board_values = () => [
+  [2, 3, 4, 4, 4, 4, 3, 2],
+  [3, 4, 6, 6, 6, 6, 4, 3],
+  [4, 6, 8, 8, 8, 8, 6, 4],
+  [4, 6, 8, 8, 8, 8, 6, 4],
+  [4, 6, 8, 8, 8, 8, 6, 4],
+  [4, 6, 8, 8, 8, 8, 6, 4],
+  [3, 4, 6, 6, 6, 6, 4, 3],
+  [2, 3, 4, 4, 4, 4, 3, 2],
+];
+
+const create_table = () => {
+  const table = document.createElement("div");
+  table.classList.add("table");
+  for (let i = 0; i < 8; i++) {
+    const row = document.createElement("div");
+    row.classList.add("row");
+    for (let j = 0; j < 8; j++) {
+      const cell = create_cell(i, j);
+      row.appendChild(cell);
+    }
+    table.appendChild(row);
+  }
+  return table;
+};
+
+const create_cell = (i, j) => {
+  const cell = document.createElement("div");
+  const ID = `${i}_${j}`;
+  cell.id = ID;
+  cell.classList.add("cell");
+  if ((i + j) % 2 === 0) {
+    cell.classList.add("white");
+  } else {
+    cell.classList.add("black");
+  }
+  cell.setAttribute("posX", i);
+  cell.setAttribute("posY", j);
+  cell.addEventListener("click", click_listener_on_cell);
+  return cell;
+};
+
+function click_listener_on_cell() {
+  coordinate = {
+    x: Number(this.getAttribute("posX")),
+    y: Number(this.getAttribute("posY")),
+  };
+  state.move(coordinate);
+}
+
+const modify_visited = () => {
+  $(".visited").removeClass("visited");
+  state.trace.forEach((coordinate) => {
+    var id = get_ID_at_coordinates(coordinate);
+    $(id).addClass("visited");
+  });
+};
+
+const end_game = () => {
+  const visited_count = $(".visited").length;
+  if (visited_count === 63) {
+    display_message("You Win.", (persist = true));
+    return;
+  }
+  const valid_moves = $(".valid").length;
+  if (valid_moves === 0) {
+    display_message("Game Over. No More moves", (persist = true));
+  }
+};
+
+const update_board = (move_type = "forward") => {
+  $(".knight div").fadeOut(chessBoard.speed / 2, function () {
+    $(this).html("");
+  });
+  $(".knight").removeClass("knight");
+  var id = `#${state.cur_coord.x}_${state.cur_coord.y}`;
+  $(id).addClass("knight");
+  const div = document.createElement("div");
+  $(id).html(div);
+  $(`${id} div`).fadeIn(chessBoard.speed / 2);
+  modify_weight(move_type);
+  modify_visited();
+  add_valid_class_to_valid_moves(state.cur_coord);
+  end_game();
+};

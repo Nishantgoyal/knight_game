@@ -35,3 +35,5 @@ const state = {
     update_board("back");
   },
 };
+
+state.initialise();
