@@ -86,6 +86,5 @@ function display_message(message, persist = false) {
   }
 }
 
-function is_move_valid(coordinates) {
-  return $("#" + coordinates.x + "_" + coordinates.y).hasClass("valid");
-}
+const is_move_valid = (coordinates) =>
+  $("#" + coordinates.x + "_" + coordinates.y).hasClass("valid");
