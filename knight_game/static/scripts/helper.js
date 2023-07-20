@@ -1,34 +1,26 @@
-function get_ID_at_coordinates(coordinates) {
-  // It returns the ID of the cell at the given coordinates
-  // E.g.: coordinates: (3,2) --> cell with ID "3_2"
-  return "#" + coordinates.x + "_" + coordinates.y;
-}
+const get_ID_at_coordinates = (coordinates) =>
+  "#" + coordinates.x + "_" + coordinates.y;
 
-function all_moves(coordinates) {
-  return [
-    { x: coordinates.x + 1, y: coordinates.y + 2 },
-    { x: coordinates.x + 1, y: coordinates.y - 2 },
-    { x: coordinates.x - 1, y: coordinates.y + 2 },
-    { x: coordinates.x - 1, y: coordinates.y - 2 },
-    { x: coordinates.x + 2, y: coordinates.y + 1 },
-    { x: coordinates.x + 2, y: coordinates.y - 1 },
-    { x: coordinates.x - 2, y: coordinates.y + 1 },
-    { x: coordinates.x - 2, y: coordinates.y - 1 },
-  ];
-}
+const all_moves = (coordinates) => [
+  { x: coordinates.x + 1, y: coordinates.y + 2 },
+  { x: coordinates.x + 1, y: coordinates.y - 2 },
+  { x: coordinates.x - 1, y: coordinates.y + 2 },
+  { x: coordinates.x - 1, y: coordinates.y - 2 },
+  { x: coordinates.x + 2, y: coordinates.y + 1 },
+  { x: coordinates.x + 2, y: coordinates.y - 1 },
+  { x: coordinates.x - 2, y: coordinates.y + 1 },
+  { x: coordinates.x - 2, y: coordinates.y - 1 },
+];
 
-function is_coordinates_bounded(coordinates) {
-  return (
-    coordinates.x >= 0 &&
-    coordinates.x < 8 &&
-    coordinates.y >= 0 &&
-    coordinates.y < 8
-  );
-}
+const is_coordinates_bounded = (coordinates) =>
+  coordinates.x >= 0 &&
+  coordinates.x < 8 &&
+  coordinates.y >= 0 &&
+  coordinates.y < 8;
 
-function add_valid_class_to_valid_moves(coordinates) {
+const add_valid_class_to_valid_moves = (coordinates) => {
   $(".valid").removeClass("valid");
-  all_moves(coordinates).forEach(function (ele) {
+  all_moves(coordinates).forEach((ele) => {
     var id = get_ID_at_coordinates(ele);
     var pos_valid = is_coordinates_bounded(ele);
     var is_visited = $(id).hasClass("visited");
@@ -36,9 +28,9 @@ function add_valid_class_to_valid_moves(coordinates) {
       $(id).addClass("valid");
     }
   });
-}
+};
 
-function get_min_valid_move() {
+const get_min_valid_move = () => {
   var valid_moves = $(".valid");
   var min_valid_move;
   var min_value = 8;
@@ -57,9 +49,9 @@ function get_min_valid_move() {
     }
   }
   return min_valid_move;
-}
+};
 
-function modify_weight(move_type) {
+const modify_weight = (move_type) => {
   var weight = -1;
   if (move_type === "back") {
     weight = 1;
@@ -71,17 +63,17 @@ function modify_weight(move_type) {
     y = Number(move.getAttribute("posY"));
     chessBoard.board_values[x][y] += weight;
   }
-}
+};
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-function display_message(message, persist = false) {
+const display_message = (message, persist = false) => {
   $("#message").text(message);
   $("#message").stop(true, true).fadeIn(500);
   if (!persist) {
     $("#message").stop(true, true).fadeOut(5000);
   }
-}
+};
 
 const is_move_valid = (coordinates) =>
   $("#" + coordinates.x + "_" + coordinates.y).hasClass("valid");
