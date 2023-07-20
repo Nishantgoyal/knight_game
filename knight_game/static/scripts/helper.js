@@ -127,7 +127,7 @@ const create_cell = (i, j) => {
 const modify_visited = () => {
   $(".visited").removeClass("visited");
   state.trace.forEach((coordinate) => {
-    var id = get_ID_at_coordinates(coordinate);
+    const id = get_ID_at_coordinates(coordinate);
     $(id).addClass("visited");
   });
 };
@@ -145,11 +145,11 @@ const end_game = () => {
 };
 
 const update_board = (move_type = "forward") => {
-  $(".knight div").fadeOut(chessBoard.speed / 2, function () {
+  $(".knight div").fadeOut(chessBoard.speed / 2, () => {
     $(this).html("");
   });
   $(".knight").removeClass("knight");
-  var id = `#${state.cur_coord.x}_${state.cur_coord.y}`;
+  const id = `#${state.cur_coord.x}_${state.cur_coord.y}`;
   $(id).addClass("knight");
   const div = document.createElement("div");
   $(id).html(div);
