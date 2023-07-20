@@ -1,17 +1,17 @@
-var controls = {
+const controls = {
   reset: document.getElementById("reset"),
   back: document.getElementById("back"),
   solution: document.getElementById("solution"),
   info: document.getElementById("info"),
 };
-controls.info.addEventListener("click", function () {
+
+controls.info.addEventListener("click", () => {
   message =
     "Find a Sequence of moves for the knight such that it visits every square exactly once";
   display_message(message, (persist = true));
 });
 
-controls.reset.addEventListener("click", function () {
-  // Behaviour of Reset button
+controls.reset.addEventListener("click", () => {
   chessBoard.speed = 1000;
   if (state.cur_coord === undefined) {
     return;
@@ -22,11 +22,11 @@ controls.reset.addEventListener("click", function () {
   state.initialise();
 });
 
-controls.back.addEventListener("click", function () {
+controls.back.addEventListener("click", () => {
   state.back();
 });
 
-controls.solution.addEventListener("click", function () {
+controls.solution.addEventListener("click", () => {
   if (state.trace.length > 0) {
     display_message(
       "Please reset the board and click on a cell. Then click on solve button.",
@@ -42,13 +42,11 @@ controls.solution.addEventListener("click", function () {
   }
 });
 
-async function solve() {
-  // var cur_pos = state.trace[0];
+const solve = async () => {
   chessBoard.speed = 0;
-  for (var i = 1; i < 64; i++) {
+  for (let i = 1; i < 64; i++) {
     cur_pos = get_min_valid_move();
     state.move(cur_pos);
     await sleep(400);
-    // break;
   }
-}
+};
