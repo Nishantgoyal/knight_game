@@ -71,6 +71,18 @@ function modify_visited() {
   });
 }
 
+function end_game() {
+  const visited_count = $(".visited").length;
+  if (visited_count === 63) {
+    display_message("You Win.", (persist = true));
+    return;
+  }
+  const valid_moves = $(".valid").length;
+  if (valid_moves === 0) {
+    display_message("Game Over. No More moves", (persist = true));
+  }
+}
+
 function update_board(move_type = "forward") {
   $(".knight div").fadeOut(chessBoard.speed / 2, function () {
     $(this).html("");
