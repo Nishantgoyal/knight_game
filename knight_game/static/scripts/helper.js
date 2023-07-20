@@ -73,10 +73,7 @@ function modify_weight(move_type) {
   }
 }
 
-function sleep(ms) {
-  // ms = 10;
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function display_message(message, persist = false) {
   $("#message").text(message);
