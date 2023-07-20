@@ -26,7 +26,6 @@ function initialise_chessboard() {
 
 function create_table() {
   var table = document.createElement("div");
-  // table.addClass("table");
   table.classList.add("table");
   for (var i = 0; i < 8; i++) {
     var row = document.createElement("div");
@@ -53,7 +52,6 @@ function create_cell(i, j) {
   cell.setAttribute("posX", i);
   cell.setAttribute("posY", j);
   cell.addEventListener("click", click_listener_on_cell);
-  // cell.textContent = chessBoard.board_values[i][j];
   return cell;
 }
 
