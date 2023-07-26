@@ -145,6 +145,18 @@ const end_game = () => {
 };
 
 const update_board = (move_type = "forward") => {
+  $.ajax({
+    url: "/move",
+    type: "POST",
+    contentType: "application/json",
+    data: JSON.stringify({ coordinate: coordinate }),
+    success: function (response) {
+      console.log(response.result);
+    },
+    error: function (error) {
+      console.log(error);
+    },
+  });
   $(".knight div").fadeOut(chessBoard.speed / 2, () => {
     $(this).html("");
   });
