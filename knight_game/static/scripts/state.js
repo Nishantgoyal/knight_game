@@ -11,7 +11,7 @@ const state = {
       this.cur_coord = coordinate;
       update_board();
     } else {
-      is_valid = is_move_valid(coordinate);
+      is_valid = $(`#${coordinate.x}_${coordinate.y}`).hasClass("valid");
       if (is_valid) {
         this.trace.push(this.cur_coord);
         this.cur_coord = coordinate;

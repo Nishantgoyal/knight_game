@@ -71,9 +71,6 @@ const display_message = (message, persist = false) => {
   }
 };
 
-const is_move_valid = (coordinates) =>
-  $("#" + coordinates.x + "_" + coordinates.y).hasClass("valid");
-
 const initialise_board_values = () => [
   [2, 3, 4, 4, 4, 4, 3, 2],
   [3, 4, 6, 6, 6, 6, 4, 3],
