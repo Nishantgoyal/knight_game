@@ -32,15 +32,16 @@ const get_min_valid_move = () => {
   let min_valid_move;
   let min_value = 8;
   for (let i = 0; i < valid_moves.length; i++) {
-    const valid_move = valid_moves[i];
-    let x = Number(valid_move.getAttribute("posX"));
-    let y = Number(valid_move.getAttribute("posY"));
-    const value = chessBoard.board_values[x][y];
+    const id = valid_moves[i]
+      .getAttribute("id")
+      .split("_")
+      .map((num) => Number(num));
+    const value = chessBoard.board_values[id[0]][id[1]];
     if (value < min_value) {
       min_value = value;
       min_valid_move = {
-        x: x,
-        y: y,
+        x: id[0],
+        y: id[1],
       };
     }
   }
@@ -54,10 +55,11 @@ const modify_weight = (move_type) => {
   }
   const valid_moves = $(".valid");
   for (let i = 0; i < valid_moves.length; i++) {
-    const move = valid_moves[i];
-    x = Number(move.getAttribute("posX"));
-    y = Number(move.getAttribute("posY"));
-    chessBoard.board_values[x][y] += weight;
+    const id = valid_moves[i]
+      .getAttribute("id")
+      .split("_")
+      .map((num) => Number(num));
+    chessBoard.board_values[id[0]][id[1]] += weight;
   }
 };
 
@@ -106,12 +108,14 @@ const create_cell = (i, j) => {
   } else {
     cell.classList.add("black");
   }
-  cell.setAttribute("posX", i);
-  cell.setAttribute("posY", j);
   cell.addEventListener("click", (event) => {
+    const id = event.target
+      .getAttribute("id")
+      .split("_")
+      .map((num) => Number(num));
     coordinate = {
-      x: Number(event.target.getAttribute("posX")),
-      y: Number(event.target.getAttribute("posY")),
+      x: id[0],
+      y: id[1],
     };
     state.move(coordinate);
   });
