@@ -147,7 +147,7 @@ const update_board = (move_type = "forward") => {
     url: "/move",
     type: "POST",
     contentType: "application/json",
-    data: JSON.stringify({ coordinate: coordinate }),
+    data: JSON.stringify({ coordinate: coordinate, move_type: move_type }),
     success: function (response) {
       console.log(response.result);
     },
