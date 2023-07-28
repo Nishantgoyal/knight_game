@@ -1,6 +1,3 @@
-const get_ID_at_coordinates = (coordinates) =>
-  "#" + coordinates.x + "_" + coordinates.y;
-
 const all_moves = (coordinates) => [
   { x: coordinates.x + 1, y: coordinates.y + 2 },
   { x: coordinates.x + 1, y: coordinates.y - 2 },
@@ -20,9 +17,9 @@ const is_coordinates_bounded = (coordinates) =>
 
 const add_valid_class_to_valid_moves = (coordinates) => {
   $(".valid").removeClass("valid");
-  all_moves(coordinates).forEach((ele) => {
-    const id = get_ID_at_coordinates(ele);
-    const pos_valid = is_coordinates_bounded(ele);
+  all_moves(coordinates).forEach((coordinate) => {
+    const id = `#${coordinate.x}_${coordinate.y}`;
+    const pos_valid = is_coordinates_bounded(coordinate);
     const is_visited = $(id).hasClass("visited");
     if (pos_valid && !is_visited) {
       $(id).addClass("valid");
@@ -127,7 +124,7 @@ const create_cell = (i, j) => {
 const modify_visited = () => {
   $(".visited").removeClass("visited");
   state.trace.forEach((coordinate) => {
-    const id = get_ID_at_coordinates(coordinate);
+    const id = `#${coordinate.x}_${coordinate.y}`;
     $(id).addClass("visited");
   });
 };
