@@ -1,6 +1,3 @@
-const get_ID_at_coordinates = (coordinates) =>
-  "#" + coordinates.x + "_" + coordinates.y;
-
 const all_moves = (coordinates) => [
   { x: coordinates.x + 1, y: coordinates.y + 2 },
   { x: coordinates.x + 1, y: coordinates.y - 2 },
@@ -20,9 +17,9 @@ const is_coordinates_bounded = (coordinates) =>
 
 const add_valid_class_to_valid_moves = (coordinates) => {
   $(".valid").removeClass("valid");
-  all_moves(coordinates).forEach((ele) => {
-    const id = get_ID_at_coordinates(ele);
-    const pos_valid = is_coordinates_bounded(ele);
+  all_moves(coordinates).forEach((coordinate) => {
+    const id = `#${coordinate.x}_${coordinate.y}`;
+    const pos_valid = is_coordinates_bounded(coordinate);
     const is_visited = $(id).hasClass("visited");
     if (pos_valid && !is_visited) {
       $(id).addClass("valid");
@@ -35,15 +32,16 @@ const get_min_valid_move = () => {
   let min_valid_move;
   let min_value = 8;
   for (let i = 0; i < valid_moves.length; i++) {
-    const valid_move = valid_moves[i];
-    let x = Number(valid_move.getAttribute("posX"));
-    let y = Number(valid_move.getAttribute("posY"));
-    const value = chessBoard.board_values[x][y];
+    const id = valid_moves[i]
+      .getAttribute("id")
+      .split("_")
+      .map((num) => Number(num));
+    const value = chessBoard.board_values[id[0]][id[1]];
     if (value < min_value) {
       min_value = value;
       min_valid_move = {
-        x: x,
-        y: y,
+        x: id[0],
+        y: id[1],
       };
     }
   }
@@ -57,10 +55,11 @@ const modify_weight = (move_type) => {
   }
   const valid_moves = $(".valid");
   for (let i = 0; i < valid_moves.length; i++) {
-    const move = valid_moves[i];
-    x = Number(move.getAttribute("posX"));
-    y = Number(move.getAttribute("posY"));
-    chessBoard.board_values[x][y] += weight;
+    const id = valid_moves[i]
+      .getAttribute("id")
+      .split("_")
+      .map((num) => Number(num));
+    chessBoard.board_values[id[0]][id[1]] += weight;
   }
 };
 
@@ -73,9 +72,6 @@ const display_message = (message, persist = false) => {
     $("#message").stop(true, true).fadeOut(5000);
   }
 };
-
-const is_move_valid = (coordinates) =>
-  $("#" + coordinates.x + "_" + coordinates.y).hasClass("valid");
 
 const initialise_board_values = () => [
   [2, 3, 4, 4, 4, 4, 3, 2],
@@ -112,12 +108,14 @@ const create_cell = (i, j) => {
   } else {
     cell.classList.add("black");
   }
-  cell.setAttribute("posX", i);
-  cell.setAttribute("posY", j);
   cell.addEventListener("click", (event) => {
+    const id = event.target
+      .getAttribute("id")
+      .split("_")
+      .map((num) => Number(num));
     coordinate = {
-      x: Number(event.target.getAttribute("posX")),
-      y: Number(event.target.getAttribute("posY")),
+      x: id[0],
+      y: id[1],
     };
     state.move(coordinate);
   });
@@ -127,7 +125,7 @@ const create_cell = (i, j) => {
 const modify_visited = () => {
   $(".visited").removeClass("visited");
   state.trace.forEach((coordinate) => {
-    const id = get_ID_at_coordinates(coordinate);
+    const id = `#${coordinate.x}_${coordinate.y}`;
     $(id).addClass("visited");
   });
 };
