@@ -1,162 +1,20 @@
-#preload-01 {
-  background: url(../images/knight_image.png);
-}
-
-body {
-  margin: 0;
-}
-
-/* Header */
-
-.full-header {
-  width: 100vw;
-  background: #000000;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #434343, #000000);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #434343, #000000);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  display: flex;
-  justify-content: center;
-}
-
-#game-title {
-  width: 72vh;
-  height: 8vh;
-  line-height: 8vh;
-  color: #ffefba;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0;
-  font-size: 1.5rem;
-}
-
-#game-title span {
-  font-size: 2.5rem;
-  font-weight: 800;
-}
-
-@media screen and (max-width: 600px),
-screen and (max-height: 600px) {
-  #game-title {
-    font-size: 1rem;
-  }
-
-  #game-title span {
-    font-size: 1.5rem;
-    font-weight: 600;
-  }
-}
-
-@media screen and (max-width: 400px),
-screen and (max-height: 400px) {
-  #game-title {
-    font-size: 1rem;
-  }
-
-  #game-title span {
-    font-size: 1rem;
-    font-weight: 600;
-  }
-}
-
-@media screen and (orientation: portrait) {
-  #game-title {
-    width: 80vw;
-  }
-}
-
-i {
-  padding: 1vw;
-  line-height: 8vh;
-}
-
-#message {
-  position: absolute;
-  background: #000000;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #434343, #000000);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #434343, #000000);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  color: wheat;
-  width: 100vw;
-  font-size: 1.2rem;
-  text-align: center;
-}
-
-@media screen and (max-width: 600px),
-screen and (max-height: 600px) {
-  #message {
-    font-size: 1rem;
-  }
-}
-
-/* Game Panel */
-
-.game-panel {
-  width: 100vw;
-  display: flex;
-  height: 92vh;
-  background: #ffefba;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #ffffff, #ffefba);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #ffffff, #ffefba);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  justify-content: center;
-}
-
-/* Chessboard */
-
 .chessboard {
   border-collapse: collapse;
-  height: 80vh;
-  width: 80vh;
-  margin-top: 5vh;
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(30, 19, 12, 0.4),
-    5px 5px 5px 0px rgba(30, 19, 12, 0.7);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(30, 19, 12, 0.4),
-    5px 5px 5px 0px rgba(30, 19, 12, 0.7);
-  box-shadow: 10px 10px 5px 0px rgba(30, 19, 12, 0.4),
-    5px 5px 5px 0px rgba(30, 19, 12, 0.7);
+  box-shadow: 10px 10px 5px 0px rgba(30, 19, 12, 0.4), 5px 5px 5px 0px rgba(30, 19, 12, 0.7);
   border: 2.5vh solid #1e130c;
   border-radius: 1%;
 }
 
-@media screen and (max-width: 700px) and (orientation: portrait) {
-  .chessboard {
-    margin-top: 10vh;
-  }
-}
-
-@media screen and (orientation: portrait) {
-  .chessboard {
-    background: lightgoldenrodyellow;
-    height: 80vw;
-    width: 80vw;
-  }
-}
-
 .row {
   font-size: 0;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
 }
 
 .cell {
-  padding: 0;
-  height: 10vh;
-  width: 10vh;
-  display: inline-block;
+  height: 8vh;
+  width: 8vh;
   text-align: center;
-}
-
-@media screen and (orientation: portrait) {
-  .cell {
-    height: 10vw;
-    width: 10vw;
-  }
 }
 
 .cell div {
@@ -167,49 +25,21 @@ screen and (max-height: 600px) {
 }
 
 .white {
-  /* background: lightcyan; */
   background: #ffefba;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #ffffff, #ffefba);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #ffffff, #ffefba);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .black {
   background: #603813;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #b29f94, #603813);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #b29f94, #603813);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .valid {
   box-shadow: inset 0vh 0vh 1vh 0.5vh cyan;
 }
 
-@media screen and (orientation: portrait) {
-  .valid {
-    box-shadow: inset 0vw 0vw 1vw 0.5vw cyan;
-  }
-}
-
 .visited {
   background: #000000;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #434343, #000000);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #434343, #000000);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   box-shadow: inset 0vh 0vh 1vh 0.5vh rgba(90, 90, 90, 0.75);
   transition: ease-in 100ms;
-}
-
-@media screen and (orientation: portrait) {
-  .visited {
-    box-shadow: inset 0vw 0vw 1vw 0.5vw rgba(90, 90, 90, 0.75);
-  }
 }
 
 .visited:hover {

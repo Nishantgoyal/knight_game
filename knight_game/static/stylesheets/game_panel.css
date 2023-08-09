@@ -1,0 +1,13 @@
+.game-panel {
+    height: 92vh;
+    background: #ffefba;
+    display: grid;
+    grid-template-columns: 8fr 1fr;
+    align-items: center;
+}
+
+.game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

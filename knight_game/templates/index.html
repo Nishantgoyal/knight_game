@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Knight Tour Game</title>
-  
+
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
-  <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/chessboard.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/main.css') }}" />
 
   <script src="{{ url_for('static', filename='scripts/helper.js') }} " defer></script>
   <script src="{{ url_for('static', filename='scripts/state.js') }} " defer></script>
@@ -18,31 +18,34 @@
 </head>
 
 <body>
-  <!-- HEADER Section -->
-  <div class="full-header">
-    <div id="game-title">
-      <div class="controls">
+  <div class="container">
+    <!-- HEADER Section -->
+    <div class="header">
+      <div class="control">
         <i id="back" class="fa fa-arrow-left" aria-hidden="true" title="Back"></i>
+      </div>
+      <div class="control">
         <i id="reset" class="fa fa-refresh" aria-hidden="true" title="Reset"></i>
       </div>
-      <span>Knight Tour</span>
-      <span id="score"></span>
-      <div class="controls">
+      <div>Knight Tour</div>
+      <div class="control">
         <i id="solution" class="fa fa-lightbulb-o" aria-hidden="true" title="Solution"></i>
+      </div>
+      <div class="control">
         <i id="info" class="fa fa-info-circle" aria-hidden=" true " title="info"></i>
       </div>
     </div>
-  </div>
 
-  <!-- Instruction Section - Hidden by default -->
-  <div id="message">
-    Find a Sequence of moves for the knight such that it visits every square
-    exactly once
-  </div>
+    <!-- Actual Game Panel -->
+    <div class="game-panel">
+      <div class="game">
+        <div class="chessboard"></div>
+      </div>
 
-  <!-- Actual Game Panel -->
-  <div class="game-panel">
-    <div class="chessboard"></div>
+      <div class="progress-bar">
+        <div class="inner"><span></span></div>
+      </div>
+    </div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.5.1.min.js "
