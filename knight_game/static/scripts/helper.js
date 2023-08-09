@@ -66,11 +66,11 @@ const modify_weight = (move_type) => {
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const display_message = (message, persist = false) => {
-  $("#message").text(message);
-  $("#message").stop(true, true).fadeIn(500);
-  if (!persist) {
-    $("#message").stop(true, true).fadeOut(5000);
-  }
+  // $(".message").text(message);
+  // $(".message").stop(true, true).fadeIn(500);
+  // if (!persist) {
+  //   $(".message").stop(true, true).fadeOut(5000);
+  // }
 };
 
 const initialise_board_values = () => [
@@ -166,16 +166,16 @@ const update_board = (move_type = "forward") => {
   $(`${id} div`).fadeIn(chessBoard.speed / 2);
   modify_weight(move_type);
   modify_visited();
-  display_score(state.trace.length);
+  // display_score(state.trace.length);
   add_valid_class_to_valid_moves(state.cur_coord);
   end_game();
 };
 
-const display_score = (trace_len) => {
-  document.getElementById('score').innerHTML = trace_len;
-  if (trace_len === 0){
-    document.getElementById('score').style.visibility = 'hidden';
-  } else {
-    document.getElementById('score').style.visibility = 'visible';
-  }
-};
+// const display_score = (trace_len) => {
+//   document.getElementById('score').innerHTML = trace_len;
+//   if (trace_len === 0){
+//     document.getElementById('score').style.visibility = 'hidden';
+//   } else {
+//     document.getElementById('score').style.visibility = 'visible';
+//   }
+// };

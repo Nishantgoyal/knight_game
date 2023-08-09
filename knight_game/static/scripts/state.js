@@ -4,7 +4,7 @@ const state = {
   initialise: function () {
     this.cur_coord = undefined;
     this.trace = [];
-    display_score(this.trace.length);
+    // display_score(this.trace.length);
   },
   move: function (coordinate) {
     display_message("");
