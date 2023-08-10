@@ -20,10 +20,14 @@ controls.reset.addEventListener("click", () => {
   chessBoard.board_values = initialise_board_values();
   chessBoard.initialise();
   state.initialise();
+  update_progress_bar();
+
 });
 
 controls.back.addEventListener("click", () => {
   state.back();
+  update_progress_bar();
+
 });
 
 controls.solution.addEventListener("click", () => {
