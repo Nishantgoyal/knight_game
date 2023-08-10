@@ -179,3 +179,7 @@ const update_board = (move_type = "forward") => {
 //     document.getElementById('score').style.visibility = 'visible';
 //   }
 // };
+
+const update_progress_bar = () => {
+  document.getElementById('progress-bar').style.height = `${state.trace.length}vh`;
+};

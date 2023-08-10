@@ -21,6 +21,7 @@ const state = {
         display_message("Invalid Move");
       }
     }
+    update_progress_bar();
   },
   back: function () {
     if (this.trace.length === 0) {
