@@ -66,11 +66,11 @@ const modify_weight = (move_type) => {
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const display_message = (message, persist = false) => {
-  // $(".message").text(message);
-  // $(".message").stop(true, true).fadeIn(500);
-  // if (!persist) {
-  //   $(".message").stop(true, true).fadeOut(5000);
-  // }
+  $(".message").text(message);
+  $(".message").stop(true, true).fadeIn(1000);
+  if (!persist) {
+    $(".message").stop(true, true).fadeOut(5000);
+  }
 };
 
 const initialise_board_values = () => [

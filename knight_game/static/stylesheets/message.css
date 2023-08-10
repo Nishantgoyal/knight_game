@@ -1,0 +1,9 @@
+.message {
+    position: absolute;
+    margin-top: 8vh;
+    background-color: #603813;
+    color: #ffefba;
+    width: 100vw;
+    text-align: center;
+    font-size: larger;
+}
