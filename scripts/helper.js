@@ -143,18 +143,6 @@ const end_game = () => {
 };
 
 const update_board = (move_type = "forward") => {
-  $.ajax({
-    url: "/move",
-    type: "POST",
-    contentType: "application/json",
-    data: JSON.stringify({ coordinate: coordinate, move_type: move_type }),
-    success: function (response) {
-      console.log(response.result);
-    },
-    error: function (error) {
-      console.log(error);
-    },
-  });
   $(".knight div").fadeOut(chessBoard.speed / 2, () => {
     $(this).html("");
   });
@@ -166,19 +154,10 @@ const update_board = (move_type = "forward") => {
   $(`${id} div`).fadeIn(chessBoard.speed / 2);
   modify_weight(move_type);
   modify_visited();
-  // display_score(state.trace.length);
   add_valid_class_to_valid_moves(state.cur_coord);
   end_game();
 };
 
-// const display_score = (trace_len) => {
-//   document.getElementById('score').innerHTML = trace_len;
-//   if (trace_len === 0){
-//     document.getElementById('score').style.visibility = 'hidden';
-//   } else {
-//     document.getElementById('score').style.visibility = 'visible';
-//   }
-// };
 
 const update_progress_bar = () => {
   document.getElementById('progress-bar').style.height = `${state.trace.length}vh`;
