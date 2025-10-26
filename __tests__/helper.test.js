@@ -23,22 +23,22 @@ describe('all_moves', () => {
 
 describe('is_coordinates_bounded', () => {
     test.each([
-        [{ x: 0, y: 0 }, true, 'top-left corner'],
-        [{ x: 7, y: 7 }, true, 'bottom-right corner'],
-        [{ x: 4, y: 4 }, true, 'center'],
-        [{ x: 0, y: 7 }, true, 'bottom-left corner'],
-        [{ x: 7, y: 0 }, true, 'top-right corner'],
-        [{ x: -1, y: 4 }, false, "negative x"],
-        [{ x: -5, y: 0 }, false, "large negative x"],
-        [{ x: 4, y: -1 }, false, "negative y"],
-        [{ x: 4, y: -3 }, false, "large negative y"],
-        [{ x: 8, y: 4 }, false, "x at boundary"],
-        [{ x: 10, y: 0 }, false, "x beyond boundary"],
-        [{ x: 4, y: 8 }, false, "y at boundary"],
-        [{ x: 0, y: 12 }, false, "y beyond boundary"],
-        [{ x: -1, y: -1 }, false, "both negative"],
-        [{ x: 8, y: 8 }, false, "both at boundary"],
-        [{ x: -1, y: 8 }, false, "x negative, y at boundary"],
+        { coordinates: { x: 0, y: 0 }, expected: true, description: 'top-left corner' },
+        { coordinates: { x: 7, y: 7 }, expected: true, description: 'bottom-right corner' },
+        { coordinates: { x: 4, y: 4 }, expected: true, description: 'center' },
+        { coordinates: { x: 0, y: 7 }, expected: true, description: 'bottom-left corner' },
+        { coordinates: { x: 7, y: 0 }, expected: true, description: 'top-right corner' },
+        { coordinates: { x: -1, y: 4 }, expected: false, description: "negative x" },
+        { coordinates: { x: -5, y: 0 }, expected: false, description: "large negative x" },
+        { coordinates: { x: 4, y: -1 }, expected: false, description: "negative y" },
+        { coordinates: { x: 4, y: -3 }, expected: false, description: "large negative y" },
+        { coordinates: { x: 8, y: 4 }, expected: false, description: "x at boundary" },
+        { coordinates: { x: 10, y: 0 }, expected: false, description: "x beyond boundary" },
+        { coordinates: { x: 4, y: 8 }, expected: false, description: "y at boundary" },
+        { coordinates: { x: 0, y: 12 }, expected: false, description: "y beyond boundary" },
+        { coordinates: { x: -1, y: -1 }, expected: false, description: "both negative" },
+        { coordinates: { x: 8, y: 8 }, expected: false, description: "both at boundary" },
+        { coordinates: { x: -1, y: 8 }, expected: false, description: "x negative, y at boundary" },
     ])('should return $expected for coordinates $coordinates ($description)', (coordinates, expected, description) => {
         expect(is_coordinates_bounded(coordinates)).toBe(expected);
     });
