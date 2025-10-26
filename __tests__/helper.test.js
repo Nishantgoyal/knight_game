@@ -39,7 +39,7 @@ describe('is_coordinates_bounded', () => {
         [{ x: -1, y: -1 }, false, "both negative"],
         [{ x: 8, y: 8 }, false, "both at boundary"],
         [{ x: -1, y: 8 }, false, "x negative, y at boundary"],
-    ])('should return %s for coordinates %s (%s)', (coordinates, expected, description) => {
+    ])('For coordinates %s (%s), should return %s', (coordinates, expected, description) => {
         expect(is_coordinates_bounded(coordinates)).toBe(expected);
     });
 });
