@@ -1,4 +1,3 @@
-const test = require("node:test");
 const { all_moves } = require("../scripts/helper.js");
 
 describe('all_moves', () => {
