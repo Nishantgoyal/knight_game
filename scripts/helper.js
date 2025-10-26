@@ -164,4 +164,4 @@ const update_progress_bar = () => {
 };
 
 
-module.exports = { all_moves };
+module.exports = { all_moves, is_coordinates_bounded };
