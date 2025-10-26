@@ -162,3 +162,6 @@ const update_board = (move_type = "forward") => {
 const update_progress_bar = () => {
   document.getElementById('progress-bar').style.height = `${state.trace.length}vh`;
 };
+
+
+module.exports = { all_moves };
